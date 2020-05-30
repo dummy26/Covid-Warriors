@@ -35,7 +35,6 @@ def live_tracker(request):
 
 def search(request):
     if request.method == 'GET':
-
         save_json()
 
         df = pandas.read_json('home/data.txt')
@@ -50,6 +49,7 @@ def search(request):
             if state.lower() in query:
                 target = state
                 break
+
         andaman_extras = ['andaman', 'andaman and nicobar',
                           'andaman and nicobar island']
 
@@ -57,7 +57,7 @@ def search(request):
 
         for extra in andaman_extras:
             if extra in query:
-                target = states[0]
+                target = 'Andaman and Nicobar Islands'
                 break
 
         for extra in bengal_extras:
@@ -79,8 +79,10 @@ def search(request):
         # text_to_speak = 'Active' + str(Active) + \
         #     'Recovered' + str(Recovered) + 'Deaths' + \
         #     str(Deaths) + 'Confirmed' + str(Confirmed)
+
         recover_percent = round(Recovered/Confirmed*100, 2)
         death_percent = round(Deaths/Confirmed*100, 2)
+        
         context = {
             'Active': Active,
             'Recovered': Recovered,

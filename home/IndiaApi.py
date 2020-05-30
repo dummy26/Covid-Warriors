@@ -93,5 +93,5 @@ def save_heat_map():
     ax.set_title('Covid-19 Statewise Data')
     merged_data.plot(column='Confirmed', cmap='tab10',
                      linewidth=0.8, ax=ax, edgecolor='0.6', legend=True)
-    plt.gcf().set_size_inches(5, 5)
+    plt.gcf().set_size_inches(7, 6)
     plt.savefig('./media/figures/heat_map.jpg')

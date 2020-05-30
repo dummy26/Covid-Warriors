@@ -1,41 +1,69 @@
 {%extends 'home/base.html'%} {%block content%}
 
-<h1>{{State}}</h1>
-<img id='play_btn' src="../media/icons/play_btn.png" width="30" height="30" />
+<div class="text-center">
+    <h1>{{State}}</h1>
+    <img id='play_btn' src="../media/icons/play_btn.png" width="30" height="30" class="text-center" />
+</div>
+<div class="container mt-5">
+    <div class="row mb-5">
+        <div class="col-4">
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                    <h5 class='card-title'>Active</h5>
+                    <p class="card-text" id='Active'> {{Active}}</p>
+                </div>
+            </div>
+        </div>
 
-<ul>
-    <li>
-        <p>Active: </p>
-        <p id='Active'> {{Active}}</p>
-    </li>
+        <div class="col-4">
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                    <h5 class='card-title'>Recovered</h5>
+                    <p class="card-text" id='Recovered'> {{Recovered}}</p>
+                </div>
+            </div>
+        </div>
 
-    <li>
-        <p>Recovered: </p>
-        <p id='Recovered'> {{Recovered}}</p>
-    </li>
+        <div class="col-4">
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                    <h5 class='card-title'>Deaths</h5>
+                    <p class="card-text" id='Deaths'> {{Deaths}}</p>
+                </div>
+            </div>
+        </div>
 
-    <li>
-        <p>Deaths: </p>
-        <p id='Deaths'> {{Deaths}}</p>
-    </li>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                    <h5 class='card-title'>Total Confirmed</h5>
+                    <p class="card-text" id='Confirmed'> {{Confirmed}}</p>
+                </div>
+            </div>
+        </div>
 
-    <li>
-        <p>Total Confirmed: </p>
-        <p id='Confirmed'> {{Confirmed}}</p>
-    </li>
+        <div class="col-4">
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                    <h5 class='card-title'>Percent Recovered</h5>
+                    <p class="card-text" id='Confirmed'> {{recover_percent}}</p>
+                </div>
+            </div>
+        </div>
 
+        <div class="col-4">
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                    <h5 class='card-title'>Percent Death</h5>
+                    <p class="card-text" id='Confirmed'> {{death_percent}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <li>
-        <p>Percent Recovered</p>
-        <p>{{recover_percent}}</p>
-    </li>
-
-    <li>
-        <p>Percent Death</p>
-        <p>{{death_percent}}</p>
-    </li>
-
-</ul>
 
 <script>
     var t1 = document.getElementById('Active');

@@ -1,14 +1,48 @@
-{%extends 'home/base.html'%}
+{%extends 'home/base.html'%} {%block content%}
+<div class='text-center'>
+    <h1> Live Tracker</h1>
+</div>
 
-{%block content%}
-<h1> Live Tacker</h1>
-<!-- <img src="../media/figures/pie_chart.jpg" alt="pie chart of cases"/> -->
+<div class="container mt-5">
+    <div class="row mb-5">
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class='card-title'>Active</h5>
+                    <p class="card-text"> {{Active}}</p>
+                </div>
+            </div>
+        </div>
 
-<p>Active: {{Active}}</p>
-<p>Recovered: {{Recovered}}</p>
-<p>Deaths: {{Deaths}}</p>
-<p>Total Confirmed: {{Confirmed}}</p>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class='card-title'>Recovered</h5>
+                    <p class="card-text"> {{Recovered}}</p>
+                </div>
+            </div>
+        </div>
 
-<img src="../media/figures/heat_map.jpg" alt="heat map of cases per state" />
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class='card-title'>Deaths</h5>
+                    <p class="card-text"> {{Deaths}}</p>
+                </div>
+            </div>
+        </div>
 
-{%endblock content%}
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class='card-title'>Total Confirmed</h5>
+                    <p class="card-text"> {{Confirmed}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class='text-center'>
+    <img src="../media/figures/heat_map.jpg" alt="heat map of cases per state" /> {%endblock content%}
+</div>
