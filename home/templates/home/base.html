@@ -9,8 +9,154 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel='stylesheet' type="text/css" href="{%static 'home/main.css'%}">
+    <!-- <link rel='stylesheet' type="text/css" href="{%static 'home/main.css'%}"> -->
 
+    <style>
+        body {
+            background: #fafafa;
+            color: #333333;
+            margin-top: 5rem;
+        }
+        /*
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #444444;
+}
+
+ul {
+    margin: 0;
+}
+*/
+        
+        .bg-steel {
+            background-color: #5f788a;
+        }
+        
+        .site-header .navbar-nav .nav-link {
+            color: #cbd5db;
+        }
+        
+        .site-header .navbar-nav .nav-link:hover {
+            color: #ffffff;
+        }
+        
+        .site-header .navbar-nav .nav-link.active {
+            font-weight: 500;
+        }
+        /*
+.content-section {
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.article-title {
+    color: #444444;
+}
+
+a.article-title:hover {
+    color: #428bca;
+    text-decoration: none;
+}
+
+.article-content {
+    white-space: pre-line;
+}
+
+.article-img {
+    height: 65px;
+    width: 65px;
+    margin-right: 16px;
+}
+
+.article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+.article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+}
+
+.account-heading {
+    font-size: 2.5rem;
+}
+ */
+        /* Popup container - can be anything you want */
+        
+        .popup {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        /* The actual popup */
+        
+        .popup .popuptext {
+            visibility: hidden;
+            width: 160px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            top: 125%;
+            left: 50%;
+            margin-left: -80px;
+        }
+        /* Toggle this class - hide and show the popup */
+        
+        .popup .show {
+            visibility: visible;
+            -webkit-animation: fadeIn 0.5s;
+            animation: fadeIn 0.5;
+        }
+        /* Add animation (fade in the popup) */
+        
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -55,6 +201,50 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
-<script src="{% static 'home/script.js' %}"></script>
+<!-- <script src="{% static 'home/script.js' %}"></script> -->
+
+<script>
+    // HTML5 Speech Recognition API
+    function startDictation() {
+
+        if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+            var recognition = new webkitSpeechRecognition();
+
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            recognition.lang = "en-in";
+            recognition.start();
+
+            recognition.onresult = function(e) {
+                document.getElementById('transcript').value = e.results[0][0].transcript;
+                recognition.stop();
+                document.getElementById('search_form').submit();
+            };
+
+            recognition.onerror = function(e) {
+                console.log('error in recognize');
+                recognition.stop();
+            }
+            recognition.onend = function(e) {
+                var popup = document.getElementById("myPopup");
+                popup.classList.toggle("show");
+            }
+        }
+    }
+
+    //Voice search initial sound
+    function play_beep() {
+        var audioElement = new Audio("../media/audios/voice_search.mp3");
+        audioElement.play();
+    }
+
+    // When the user clicks on div, open the popup
+    function listening_popup() {
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+    }
+</script>
 
 </html>
