@@ -1,0 +1,15 @@
+{%extends 'home/base.html'%} {%block content%}
+
+<!-- Search Form -->
+<form id="search_form" method="get" action="{%url 'search'%}">
+    <div class="speech">
+        <input type="text" name="q" id="transcript" placeholder="Search" />
+        <div class="popup" onclick="listening_popup()">
+            <img onclick="play_beep(); startDictation()" id='speak_icon' width="30" height="30" src="../media/icons/microphone_icon.png" />
+            <span class="popuptext" id="myPopup">Listening...</span>
+        </div>
+    </div>
+</form>
+
+
+{%endblock content%}

@@ -1,0 +1,64 @@
+{%extends 'home/base.html'%} {%block content%}
+
+<h1>{{State}}</h1>
+<img id='play_btn' src="../media/icons/play_btn.png" width="30" height="30" />
+
+<ul>
+    <li>
+        <p>Active: </p>
+        <p id='Active'> {{Active}}</p>
+    </li>
+
+    <li>
+        <p>Recovered: </p>
+        <p id='Recovered'> {{Recovered}}</p>
+    </li>
+
+    <li>
+        <p>Deaths: </p>
+        <p id='Deaths'> {{Deaths}}</p>
+    </li>
+
+    <li>
+        <p>Total Confirmed: </p>
+        <p id='Confirmed'> {{Confirmed}}</p>
+    </li>
+
+
+    <li>
+        <p>Percent Recovered</p>
+        <p>{{recover_percent}}</p>
+    </li>
+
+    <li>
+        <p>Percent Death</p>
+        <p>{{death_percent}}</p>
+    </li>
+
+</ul>
+
+<script>
+    var t1 = document.getElementById('Active');
+    var t2 = document.getElementById('Recovered');
+    var t3 = document.getElementById('Deaths');
+    var t4 = document.getElementById('Confirmed');
+
+    var txtInput = t1.textContent + ' Active cases,' + t2.textContent + ' Recovered,' + t3.textContent + ' Deaths,' +
+        ' and' + t4.textContent + ' Total Confirmed';
+
+    var tts = window.speechSynthesis;
+    var toSpeak = new SpeechSynthesisUtterance(txtInput);
+
+    toSpeak.pitch = 2;
+    toSpeak.rate = 1.7;
+
+    // console.log("here", tts.getVoices());
+
+    var play_btn = document.querySelector('#play_btn');
+    play_btn.addEventListener('click', () => {
+        tts.speak(toSpeak);
+    });
+</script>
+
+
+{%endblock content%}
