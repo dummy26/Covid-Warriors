@@ -6,37 +6,37 @@
 <div class="container mt-5">
     <div class="row mb-5">
         <div class="col-3">
-            <div class="card">
+            <div class="card bg-blue text-center">
                 <div class="card-body">
-                    <h5 class='card-title'>Active</h5>
-                    <p class="card-text"> {{Active}}</p>
+                    <h3 class='card-title'>{{Active}}</h3>
+                    <p class="card-text"> Active cases</p>
                 </div>
             </div>
         </div>
 
         <div class="col-3">
-            <div class="card">
+            <div class="card bg-green text-center">
                 <div class="card-body">
-                    <h5 class='card-title'>Recovered</h5>
-                    <p class="card-text"> {{Recovered}}</p>
+                    <h3 class='card-title'>{{Recovered}}</h3>
+                    <p class="card-text"> Recovered</p>
                 </div>
             </div>
         </div>
 
         <div class="col-3">
-            <div class="card">
+            <div class="card bg-red text-center">
                 <div class="card-body">
-                    <h5 class='card-title'>Deaths</h5>
-                    <p class="card-text"> {{Deaths}}</p>
+                    <h3 class='card-title'>{{Deaths}}</h3>
+                    <p class="card-text"> Deaths</p>
                 </div>
             </div>
         </div>
 
         <div class="col-3">
-            <div class="card">
+            <div class="card bg-orange text-center">
                 <div class="card-body">
-                    <h5 class='card-title'>Total Confirmed</h5>
-                    <p class="card-text"> {{Confirmed}}</p>
+                    <h3 class='card-title'>{{Confirmed}}</h3>
+                    <p class="card-text">Total Confirmed</p>
                 </div>
             </div>
         </div>
@@ -44,5 +44,20 @@
 </div>
 
 <div class='text-center'>
-    <img src="../media/figures/heat_map.jpg" alt="heat map of cases per state" /> {%endblock content%}
+    <img src="../media/figures/heat_map.jpg" alt="heat map of cases per state" />
 </div>
+
+<!-- <script>
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+    }
+
+    function showPosition(position) {
+
+        console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);
+    }
+</script> -->
+
+{%endblock content%}
