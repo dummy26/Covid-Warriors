@@ -4,6 +4,7 @@ from .models import Article
 from django.contrib import messages
 from django.views.generic import ListView, DetailView
 from .IndiaApi import save_heat_map, save_pie_chart, save_json, get_data
+from .statsApi import get_stats
 import json
 import pandas
 
@@ -120,3 +121,12 @@ def search(request):
 
 def search_tab(request):
     return render(request, 'home/search_tab.html')
+
+
+def stats(request):
+    data = get_stats()
+    if data == 0:
+        print("ERROR STATS")
+        return redirect('stats')
+
+    return render(request, 'home/stats.html', data)

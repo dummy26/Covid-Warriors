@@ -12,6 +12,7 @@ urlpatterns = [
     path('article/<int:pk>', ArticleDetailView.as_view(), name='article-detail'),
     path('live_tracker', views.live_tracker, name='live_tracker'),
     path('search', views.search, name='search'),
+    path('stats', views.stats, name='stats'),
     # path('search_tab', views.search_tab, name='search_tab')
 ]
 

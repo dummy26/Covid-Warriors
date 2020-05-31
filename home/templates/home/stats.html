@@ -1,0 +1,48 @@
+{%extends 'home/base.html'%} {%block content%}
+<div class='text-center'>
+    <h1> Stats</h1>
+</div>
+<table class="table table-bordered table-hover table-responsive{-sm|-md|-lg|-xl}">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">India</th>
+            <th scope="col">China</th>
+            <th scope="col">USA</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Total Confirmed</th>
+            <td>{{india_confirmed}}</td>
+            <td>{{china_confirmed}}</td>
+            <td>{{usa_confirmed}} </td>
+        </tr>
+        <tr>
+            <th scope="row">Total Recovered</th>
+            <td>{{india_recovered}}</td>
+            <td>{{china_recovered}}</td>
+            <td>{{usa_recovered}} </td>
+        </tr>
+        <tr>
+            <th scope="row">Total Deaths</th>
+            <td>{{india_deaths}}</td>
+            <td>{{china_deaths}}</td>
+            <td>{{usa_deaths}} </td>
+        </tr>
+        <tr>
+            <th scope="row">Recovered percentage</th>
+            <td>{{india_recovered_percent}}%</td>
+            <td>{{china_recovered_percent}}%</td>
+            <td>{{usa_recovered_percent}}%</td>
+        </tr>
+        <tr>
+            <th scope="row">Deaths percentage</th>
+            <td>{{india_deaths_percent}}%</td>
+            <td>{{china_deaths_percent}}%</td>
+            <td>{{usa_deaths_percent}}%</td>
+        </tr>
+    </tbody>
+</table>
+
+{%endblock content%}
