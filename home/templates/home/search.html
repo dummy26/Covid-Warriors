@@ -67,28 +67,33 @@
 
 
 <script>
-    var t1 = document.getElementById('Active').textContent;
-    var t2 = document.getElementById('Recovered').textContent;
-    var t3 = document.getElementById('Deaths').textContent;
-    var t4 = document.getElementById('Confirmed').textContent;
+    // var t1 = document.getElementById('Active').textContent;
+    // var t2 = document.getElementById('Recovered').textContent;
+    // var t3 = document.getElementById('Deaths').textContent;
+    // var t4 = document.getElementById('Confirmed').textContent;
 
     // var txtInput = t1 + ' Active cases,' + t2 + ' Recovered,' + t3 + ' Deaths,' + ' and' + t4 + ' Total Confirmed';
-    var txtInput = document.getElementById('text_to_speak').textContent;
+    if ('speechSynthesis' in window) {
+        var txtInput = document.getElementById('text_to_speak').textContent;
 
-    var tts = window.speechSynthesis;
-    var toSpeak = new SpeechSynthesisUtterance(txtInput);
+        var tts = window.speechSynthesis;
+        var toSpeak = new SpeechSynthesisUtterance(txtInput);
 
-    toSpeak.pitch = 2;
-    toSpeak.rate = 1.7;
+        toSpeak.pitch = 2;
+        toSpeak.rate = 1.7;
 
-    // console.log(parseInt(t1.textContent));
+        // console.log(parseInt(t1.textContent));
 
-    // console.log("here", tts.getVoices());
+        // console.log("here", tts.getVoices());
 
-    var play_btn = document.querySelector('#play_btn');
-    play_btn.addEventListener('click', () => {
-        tts.speak(toSpeak);
-    });
+        var play_btn = document.querySelector('#play_btn');
+        play_btn.addEventListener('click', () => {
+            tts.speak(toSpeak);
+        });
+    } else {
+        console.log('speechSynthesis not available');
+        play_btn.style.display = 'none';
+    }
 </script>
 
 
