@@ -6,7 +6,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    # change when homepage ready 
     path('', ArticleListView.as_view(), name='homepage'),
+    # change when article tab ready 
     path('article/<int:pk>', ArticleDetailView.as_view(), name='article-detail'),
     path('live_tracker', views.live_tracker, name='live_tracker'),
     path('search', views.search, name='search'),

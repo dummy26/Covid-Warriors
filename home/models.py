@@ -1,6 +1,7 @@
 from django.db import models
 from PIL import Image
 
+# Remove when homepage and article tab are ready 
 class Article(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()

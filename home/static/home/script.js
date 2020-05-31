@@ -2,7 +2,6 @@
 function startDictation() {
 
     if (window.hasOwnProperty('webkitSpeechRecognition')) {
-
         var recognition = new webkitSpeechRecognition();
 
         recognition.continuous = false;
@@ -25,6 +24,8 @@ function startDictation() {
             var popup = document.getElementById("myPopup");
             popup.classList.toggle("show");
         }
+    } else {
+        console.log("webkitSpeechRecognition not available");
     }
 }
 
@@ -34,7 +35,7 @@ function play_beep() {
     audioElement.play();
 }
 
-// When the user clicks on div, open the popup
+// Listening popup
 function listening_popup() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");

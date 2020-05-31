@@ -1,4 +1,7 @@
 import pandas as pd
+import matplotlib
+# To solve RuntimeError 
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import requests
 from bs4 import BeautifulSoup
@@ -35,18 +38,18 @@ state_data['Recovered'] = state_data['Recovered'].map(int)
 state_data['Deaths'] = state_data['Deaths'].map(int)
 state_data['Confirmed'] = state_data['Confirmed'].map(int)
 
-# getting total
+# getting total of each category
 group_size = [state_data['Active'].iloc[35].item(),
               state_data['Recovered'].iloc[35].item(),
               state_data['Deaths'].iloc[35].item(),
               state_data['Confirmed'].iloc[35].item()
               ]
 
-
+# Used in views.live_tracker to get group_size
 def get_data():
     return group_size
 
-
+# Saves data.txt which is used in views.search 
 def save_json():
     data_json = state_data.to_json()
     with open('home/data.txt', 'w') as f:
@@ -82,7 +85,7 @@ def save_heat_map():
     map_data['States/UT'].replace('NCT of Delhi', 'Delhi', inplace=True)
     map_data['States/UT'].replace('Telangana', 'Telengana', inplace=True)
 
-    # merge both the dataframes - state_data and map_data
+    # merge state_data and map_data
     merged_data = pd.merge(map_data, state_data, how='left', on='States/UT')
     merged_data.fillna(0, inplace=True)
     merged_data.drop('Sr.No', axis=1, inplace=True)

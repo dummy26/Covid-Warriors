@@ -10,12 +10,12 @@ import pandas
 # def homepage(request):
 #     return render(request, 'home/homepage.html', {'articles': Article.objects.all()})
 
-
+# Remove later 
 class ArticleListView(ListView):
     model = Article
     template_name = 'home/homepage.html'
 
-
+# Remove later 
 class ArticleDetailView(DetailView):
     model = Article
 
@@ -34,7 +34,9 @@ def live_tracker(request):
 
 
 def search(request):
+    # when someone searches and submits form it's a get request
     if request.method == 'GET':
+        # gets data from govt site and saves it in data.txt 
         save_json()
 
         df = pandas.read_json('home/data.txt')
@@ -71,11 +73,12 @@ def search(request):
             Deaths = df[df['States/UT'] == target]['Deaths'].iloc[0]
             Confirmed = df[df['States/UT'] == target]['Confirmed'].iloc[0]
 
+        # if target is not in states this exception will be raised
         except IndexError as e:
+            # this message will be shown on homepage
             messages.error(request, 'Could not find that')
             return redirect('homepage')
-            # return HttpResponse(f"Could not find {target}")
-
+    
         # text_to_speak = 'Active' + str(Active) + \
         #     'Recovered' + str(Recovered) + 'Deaths' + \
         #     str(Deaths) + 'Confirmed' + str(Confirmed)

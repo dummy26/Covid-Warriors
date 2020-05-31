@@ -1,5 +1,5 @@
 {%extends 'home/base.html'%} {%block content%} {%if messages%} {%for message in messages%}
-<div class='alert alert-{{message.tags}}'>
+<div class='alert'>
     {{message}}
 </div>
 {%endfor%} {%endif%} {%for article in object_list%}
