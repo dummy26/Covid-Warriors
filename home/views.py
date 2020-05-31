@@ -70,6 +70,13 @@ def search(request):
             if 'bengal' in query:
                 target = "West Bengal"
 
+        if target == '':
+            jammu_extras = ["jammu", "jammu kashmir", "kashmir"]
+            for extra in jammu_extras:
+                if extra in query:
+                    target = "Jammu and Kashmir"
+                    break
+
         try:
             Active = df[df['States/UT'] == target]['Active'].iloc[0]
             Recovered = df[df['States/UT'] == target]['Recovered'].iloc[0]
