@@ -2,6 +2,7 @@
 
 <div class="text-center">
     <h1>{{State}}</h1>
+    <p id='text_to_speak' hidden> {{text_to_speak}} </p>
     <img id='play_btn' src="../media/icons/play_btn.png" width="30" height="30" class="text-center" />
 </div>
 <div class="container mt-5">
@@ -66,19 +67,21 @@
 
 
 <script>
-    var t1 = document.getElementById('Active');
-    var t2 = document.getElementById('Recovered');
-    var t3 = document.getElementById('Deaths');
-    var t4 = document.getElementById('Confirmed');
+    var t1 = document.getElementById('Active').textContent;
+    var t2 = document.getElementById('Recovered').textContent;
+    var t3 = document.getElementById('Deaths').textContent;
+    var t4 = document.getElementById('Confirmed').textContent;
 
-    var txtInput = t1.textContent + ' Active cases,' + t2.textContent + ' Recovered,' + t3.textContent + ' Deaths,' +
-        ' and' + t4.textContent + ' Total Confirmed';
+    // var txtInput = t1 + ' Active cases,' + t2 + ' Recovered,' + t3 + ' Deaths,' + ' and' + t4 + ' Total Confirmed';
+    var txtInput = document.getElementById('text_to_speak').textContent;
 
     var tts = window.speechSynthesis;
     var toSpeak = new SpeechSynthesisUtterance(txtInput);
 
     toSpeak.pitch = 2;
     toSpeak.rate = 1.7;
+
+    // console.log(parseInt(t1.textContent));
 
     // console.log("here", tts.getVoices());
 

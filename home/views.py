@@ -10,12 +10,16 @@ import pandas
 # def homepage(request):
 #     return render(request, 'home/homepage.html', {'articles': Article.objects.all()})
 
-# Remove later 
+# Remove later
+
+
 class ArticleListView(ListView):
     model = Article
     template_name = 'home/homepage.html'
 
-# Remove later 
+# Remove later
+
+
 class ArticleDetailView(DetailView):
     model = Article
 
@@ -36,7 +40,7 @@ def live_tracker(request):
 def search(request):
     # when someone searches and submits form it's a get request
     if request.method == 'GET':
-        # gets data from govt site and saves it in data.txt 
+        # gets data from govt site and saves it in data.txt
         save_json()
 
         df = pandas.read_json('home/data.txt')
@@ -52,40 +56,53 @@ def search(request):
                 target = state
                 break
 
-        andaman_extras = ['andaman', 'andaman and nicobar',
-                          'andaman and nicobar island']
+        if target == '':
+            andaman_extras = ['andaman', 'andaman and nicobar',
+                              'andaman and nicobar island']
 
-        bengal_extras = ['bengal']
+            bengal_extras = ['bengal']
 
-        for extra in andaman_extras:
-            if extra in query:
-                target = 'Andaman and Nicobar Islands'
-                break
+            for extra in andaman_extras:
+                if extra in query:
+                    target = 'Andaman and Nicobar Islands'
+                    break
 
-        for extra in bengal_extras:
-            if extra in query:
-                target = "West Bengal"
-                break
+            for extra in bengal_extras:
+                if extra in query:
+                    target = "West Bengal"
+                    break
 
         try:
             Active = df[df['States/UT'] == target]['Active'].iloc[0]
             Recovered = df[df['States/UT'] == target]['Recovered'].iloc[0]
             Deaths = df[df['States/UT'] == target]['Deaths'].iloc[0]
             Confirmed = df[df['States/UT'] == target]['Confirmed'].iloc[0]
+            Average_confirmed = df['Confirmed'].iloc[35].item() / 35
+            Average_active = df['Active'].iloc[35].item() / 35
 
         # if target is not in states this exception will be raised
         except IndexError as e:
             # this message will be shown on homepage
             messages.error(request, 'Could not find that')
             return redirect('homepage')
-    
-        # text_to_speak = 'Active' + str(Active) + \
-        #     'Recovered' + str(Recovered) + 'Deaths' + \
-        #     str(Deaths) + 'Confirmed' + str(Confirmed)
 
         recover_percent = round(Recovered/Confirmed*100, 2)
         death_percent = round(Deaths/Confirmed*100, 2)
-        
+
+        if Confirmed > Average_confirmed:
+            text_to_speak = f"With {Confirmed} total confirmed cases, {target} is in worse condition compared to national average"
+            if Active > Average_active:
+                text_to_speak += f", also its {Active} active cases are greater than national average."
+            elif Active <= Average_active:
+                text_to_speak += f", but its {Active} active cases are lesser than national average."
+
+        elif Confirmed <= Average_confirmed:
+            text_to_speak = f"With {Confirmed} total confirmed cases, {target} is in better condition compared to national average"
+            if Active > Average_active:
+                text_to_speak += f", but its {Active} active cases are greater than national average."
+            elif Active <= Average_active:
+                text_to_speak += f", also its {Active} active cases are lesser than national average."
+
         context = {
             'Active': Active,
             'Recovered': Recovered,
@@ -95,7 +112,7 @@ def search(request):
             # 'percent': Confirmed/get_data()[3]*100,
             'recover_percent': recover_percent,
             'death_percent': death_percent,
-            # 'text_to_speak': text_to_speak,
+            'text_to_speak': text_to_speak,
         }
 
         return render(request, 'home/search.html', context)
