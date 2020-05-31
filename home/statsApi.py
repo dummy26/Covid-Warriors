@@ -52,9 +52,3 @@ def get_stats():
                 'india_recovered_percent': india_recovered_percent, 'china_recovered_percent': china_recovered_percent, 'usa_recovered_percent': usa_recovered_percent,
                 'india_deaths_percent': india_deaths_percent, 'china_deaths_percent': china_deaths_percent, 'usa_deaths_percent': usa_deaths_percent,
                 }
-
-        # print(india_confirmed, china_confirmed, usa_confirmed)
-        # print(india_recovered, china_recovered, usa_recovered)
-        # print(india_deaths, china_deaths, usa_deaths)
-        # print(india_recovered_percent, china_recovered_percent, usa_recovered_percent)
-        # print(india_deaths_percent, china_deaths_percent, usa_deaths_percent)

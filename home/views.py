@@ -126,7 +126,6 @@ def search_tab(request):
 def stats(request):
     data = get_stats()
     if data == 0:
-        print("ERROR STATS")
         return redirect('stats')
 
     return render(request, 'home/stats.html', data)
