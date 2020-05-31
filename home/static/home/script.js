@@ -17,7 +17,7 @@ function startDictation() {
         };
 
         recognition.onerror = function(e) {
-            console.log('error in recognize');
+            console.log('error in recognize', e);
             recognition.stop();
         }
         recognition.onend = function(e) {
