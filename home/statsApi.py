@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import pandas as pd
+from .utils import add_comas
 
 
 def get_stats():
@@ -46,9 +47,10 @@ def get_stats():
         usa_deaths_percent = round(usa_deaths / usa_confirmed * 100, 2)
         deaths_percent = [india_deaths_percent,
                           china_deaths_percent, usa_deaths_percent]
-        return {'india_confirmed': india_confirmed, 'china_confirmed': china_confirmed, 'usa_confirmed': usa_confirmed,
-                'india_recovered': india_recovered, 'china_recovered': china_recovered, 'usa_recovered': usa_recovered,
-                'india_deaths': india_deaths, 'china_deaths': china_deaths, 'usa_deaths': usa_deaths,
+
+        return {'india_confirmed': add_comas(india_confirmed), 'china_confirmed': add_comas(china_confirmed), 'usa_confirmed': add_comas(usa_confirmed),
+                'india_recovered': add_comas(india_recovered), 'china_recovered': add_comas(china_recovered), 'usa_recovered': add_comas(usa_recovered),
+                'india_deaths': add_comas(india_deaths), 'china_deaths': add_comas(china_deaths), 'usa_deaths': add_comas(usa_deaths),
                 'india_recovered_percent': india_recovered_percent, 'china_recovered_percent': china_recovered_percent, 'usa_recovered_percent': usa_recovered_percent,
                 'india_deaths_percent': india_deaths_percent, 'china_deaths_percent': china_deaths_percent, 'usa_deaths_percent': usa_deaths_percent,
                 }

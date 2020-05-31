@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.views.generic import ListView, DetailView
 from .IndiaApi import save_heat_map, save_pie_chart, save_json, get_data
 from .statsApi import get_stats
+from .utils import add_comas
 import json
 import pandas
 
@@ -30,10 +31,10 @@ def live_tracker(request):
     save_heat_map()
     data = get_data()
     context = {
-        'Active': data[0],
-        'Recovered': data[1],
-        'Deaths': data[2],
-        'Confirmed': data[3],
+        'Active': add_comas(data[0]),
+        'Recovered': add_comas(data[1]),
+        'Deaths': add_comas(data[2]),
+        'Confirmed': add_comas(data[3]),
     }
     return render(request, 'home/live_tracker.html', context)
 
@@ -61,17 +62,13 @@ def search(request):
             andaman_extras = ['andaman', 'andaman and nicobar',
                               'andaman and nicobar island']
 
-            bengal_extras = ['bengal']
-
             for extra in andaman_extras:
                 if extra in query:
                     target = 'Andaman and Nicobar Islands'
                     break
 
-            for extra in bengal_extras:
-                if extra in query:
-                    target = "West Bengal"
-                    break
+            if 'bengal' in query:
+                target = "West Bengal"
 
         try:
             Active = df[df['States/UT'] == target]['Active'].iloc[0]
@@ -105,10 +102,10 @@ def search(request):
                 text_to_speak += f", also its {Active} active cases are lesser than national average."
 
         context = {
-            'Active': Active,
-            'Recovered': Recovered,
-            'Deaths': Deaths,
-            'Confirmed': Confirmed,
+            'Active': add_comas(Active),
+            'Recovered': add_comas(Recovered),
+            'Deaths': add_comas(Deaths),
+            'Confirmed': add_comas(Confirmed),
             'State': target,
             # 'percent': Confirmed/get_data()[3]*100,
             'recover_percent': recover_percent,
@@ -127,5 +124,11 @@ def stats(request):
     data = get_stats()
     if data == 0:
         return redirect('stats')
+
+    # data from govt site and other api don't match so changing it
+    india_data =  get_data()
+    data['india_confirmed'] = add_comas(india_data[3])
+    data['india_recovered'] = add_comas(india_data[1])
+    data['india_deaths'] = add_comas(india_data[2])
 
     return render(request, 'home/stats.html', data)
