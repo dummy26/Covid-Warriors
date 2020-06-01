@@ -16,6 +16,7 @@ function startDictation() {
         }
 
         recognition.onresult = function(e) {
+            // sets what was spoken in search bar 
             document.getElementById('transcript').value = e.results[0][0].transcript;
             recognition.stop();
             document.getElementById('search_form').submit();
