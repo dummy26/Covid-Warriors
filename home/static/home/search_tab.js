@@ -1,5 +1,5 @@
 // Speech Recognition API for NAVBAR search
-function startDictation() {
+function search_tab_startDictation() {
 
     if (window.hasOwnProperty('webkitSpeechRecognition')) {
         var recognition = new webkitSpeechRecognition();
@@ -16,9 +16,9 @@ function startDictation() {
         }
 
         recognition.onresult = function(e) {
-            document.getElementById('transcript').value = e.results[0][0].transcript;
+            document.getElementById('search_tab_transcript').value = e.results[0][0].transcript;
             recognition.stop();
-            document.getElementById('search_form').submit();
+            document.getElementById('search_tab_form').submit();
         }
 
         recognition.onerror = function(e) {
@@ -32,16 +32,4 @@ function startDictation() {
     } else {
         console.log("webkitSpeechRecognition not available");
     }
-}
-
-//Voice search initial sound
-function play_beep() {
-    var audioElement = new Audio("../media/audios/voice_search.mp3");
-    audioElement.play();
-}
-
-// Listening popup
-function toggle_listening_popup() {
-    var popup = document.getElementById("listening_popup");
-    popup.classList.toggle("show");
 }

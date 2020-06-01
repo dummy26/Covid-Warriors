@@ -3,7 +3,7 @@
 <div class="text-center">
     <h1>{{State}}</h1>
     <p id='text_to_speak' hidden> {{text_to_speak}} </p>
-    <img id='play_btn' src="../media/icons/play_btn.png" width="30" height="30" class="text-center" />
+    <img id='play_btn' src="../media/icons/play.png" width="30" height="30" class="text-center" />
 </div>
 <div class="container mt-5">
     <div class="row mb-5">
@@ -67,28 +67,30 @@
 
 
 <script>
-    // var t1 = document.getElementById('Active').textContent;
-    // var t2 = document.getElementById('Recovered').textContent;
-    // var t3 = document.getElementById('Deaths').textContent;
-    // var t4 = document.getElementById('Confirmed').textContent;
-
-    // var txtInput = t1 + ' Active cases,' + t2 + ' Recovered,' + t3 + ' Deaths,' + ' and' + t4 + ' Total Confirmed';
     if ('speechSynthesis' in window) {
         var txtInput = document.getElementById('text_to_speak').textContent;
 
         var tts = window.speechSynthesis;
         var toSpeak = new SpeechSynthesisUtterance(txtInput);
 
-        toSpeak.pitch = 2;
-        toSpeak.rate = 1.7;
-
-        // console.log(parseInt(t1.textContent));
-
-        // console.log("here", tts.getVoices());
+        toSpeak.pitch = 1;
+        toSpeak.rate = 1.6;
 
         var play_btn = document.querySelector('#play_btn');
         play_btn.addEventListener('click', () => {
-            tts.speak(toSpeak);
+            if (!tts.speaking || tts.paused) {
+                // without cancel it doesnt speak anymore, try removing later
+                tts.cancel();
+                tts.speak(toSpeak);
+                console.log("spoken");
+                play_btn.setAttribute("src", "../media/icons/pause.png")
+            } else if (tts.speaking) {
+                tts.pause();
+                console.log("paused");
+                play_btn.setAttribute("src", "../media/icons/play.png")
+
+            }
+
         });
     } else {
         console.log('speechSynthesis not available');

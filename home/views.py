@@ -77,6 +77,9 @@ def search(request):
                     target = "Jammu and Kashmir"
                     break
 
+            if 'himachal' in query:
+                target = "Himachal Pradesh"
+
         try:
             Active = df[df['States/UT'] == target]['Active'].iloc[0]
             Recovered = df[df['States/UT'] == target]['Recovered'].iloc[0]

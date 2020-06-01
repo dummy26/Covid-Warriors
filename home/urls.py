@@ -13,7 +13,7 @@ urlpatterns = [
     path('live_tracker', views.live_tracker, name='live_tracker'),
     path('search', views.search, name='search'),
     path('stats', views.stats, name='stats'),
-    # path('search_tab', views.search_tab, name='search_tab')
+    path('search_tab', views.search_tab, name='search_tab')
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
