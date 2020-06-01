@@ -28,17 +28,17 @@
                         <a class="nav-item nav-link" href="{%url 'live_tracker'%}">Live Tracker</a>
                         <a class="nav-item nav-link" href="{%url 'stats'%}">Stats</a>
 
-
-
-
                         <!-- Search Form -->
                         <form id="search_form" method="get" action="{%url 'search'%}">
                             <div class="speech">
                                 <input type="text" name="q" id="transcript" placeholder="Search" />
+
                                 <div class="popup">
-                                    <img onclick="startDictation()" id='speak_icon' width="30" height="30" src="../media/icons/microphone_icon.png" />
+                                    <!-- <img onclick="startDictation()" src="../media/icons/google_mic2.png" /> -->
+                                    {%include 'home/google_mic.html'%}
                                     <span class="popuptext" id="listening_popup">Listening...</span>
                                 </div>
+
                             </div>
                         </form>
 

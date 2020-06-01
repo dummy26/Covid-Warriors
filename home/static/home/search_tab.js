@@ -1,4 +1,4 @@
-// Speech Recognition API for NAVBAR search
+// Speech Recognition API for search tab
 function search_tab_startDictation() {
 
     if (window.hasOwnProperty('webkitSpeechRecognition')) {
