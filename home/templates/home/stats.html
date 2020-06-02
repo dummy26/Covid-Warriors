@@ -1,48 +1,70 @@
-{%extends 'home/base.html'%} {%block content%}
-<div class='text-center'>
-    <h1> Stats</h1>
-</div>
-<table class="table table-bordered table-hover table-responsive{-sm|-md|-lg|-xl}">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">India</th>
-            <th scope="col">China</th>
-            <th scope="col">USA</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">Total Confirmed</th>
-            <td>{{india_confirmed}}</td>
-            <td>{{china_confirmed}}</td>
-            <td>{{usa_confirmed}} </td>
-        </tr>
-        <tr>
-            <th scope="row">Total Recovered</th>
-            <td>{{india_recovered}}</td>
-            <td>{{china_recovered}}</td>
-            <td>{{usa_recovered}} </td>
-        </tr>
-        <tr>
-            <th scope="row">Total Deaths</th>
-            <td>{{india_deaths}}</td>
-            <td>{{china_deaths}}</td>
-            <td>{{usa_deaths}} </td>
-        </tr>
-        <tr>
-            <th scope="row">Recovered percentage</th>
-            <td>{{india_recovered_percent}}%</td>
-            <td>{{china_recovered_percent}}%</td>
-            <td>{{usa_recovered_percent}}%</td>
-        </tr>
-        <tr>
-            <th scope="row">Deaths percentage</th>
-            <td>{{india_deaths_percent}}%</td>
-            <td>{{china_deaths_percent}}%</td>
-            <td>{{usa_deaths_percent}}%</td>
-        </tr>
-    </tbody>
-</table>
+{%load static%}
 
-{%endblock content%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Stats</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{%static 'home/stats.css'%}">
+</head>
+
+<body>
+
+    <h1 class="heading"> Stats</h1>
+    <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>India</th>
+                    <th>China</th>
+                    <th>USA</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>Total Confirmed</td>
+                    <td>{{india_confirmed}}</td>
+                    <td>{{china_confirmed}}</td>
+                    <td>{{usa_confirmed}} </td>
+                </tr>
+                <tr>
+                    <td>Total Recovered</td>
+                    <td>{{india_recovered}}</td>
+                    <td>{{china_recovered}}</td>
+                    <td>{{usa_recovered}} </td>
+                </tr>
+                <tr>
+                    <td>Total Deaths</td>
+                    <td>{{india_deaths}}</td>
+                    <td>{{china_deaths}}</td>
+                    <td>{{usa_deaths}} </td>
+                </tr>
+                <tr>
+                    <td>Recovered percentage</td>
+                    <td>{{india_recovered_percent}}%</td>
+                    <td>{{china_recovered_percent}}%</td>
+                    <td>{{usa_recovered_percent}}%</td>
+                </tr>
+                <tr>
+                    <td>Deaths percentage</td>
+                    <td>{{india_deaths_percent}}%</td>
+                    <td>{{china_deaths_percent}}%</td>
+                    <td>{{usa_deaths_percent}}%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+
+</html>

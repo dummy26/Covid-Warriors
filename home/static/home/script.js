@@ -1,3 +1,5 @@
+// remove after search no longer in navbar
+
 // Speech Recognition API for NAVBAR search
 function startDictation() {
 

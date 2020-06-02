@@ -1,63 +1,71 @@
-{%extends 'home/base.html'%} {%block content%}
-<div class='text-center'>
-    <h1> Live Tracker</h1>
-</div>
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="container mt-5">
-    <div class="row mb-5">
-        <div class="col-3">
-            <div class="card bg-blue text-center">
-                <div class="card-body">
-                    <h3 class='card-title'>{{Active}}</h3>
-                    <p class="card-text"> Active cases</p>
+<head>
+    <meta charset="UTF-8">
+    <title>Live Tracker</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{%static 'home/live_tracker.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'home/gradients.css'%}" type="text/css">
+
+</head>
+
+<body>
+    <div class="text-center mt-5">
+        <h1> Live Tracker</h1>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row mb-5">
+            <div class="col-3">
+                <div class="card bg-blue text-center my_shadow">
+                    <div class="card-body">
+                        <h3 class='card-title'>{{Active}}</h3>
+                        <p class="card-text"> Active cases</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-3">
-            <div class="card bg-green text-center">
-                <div class="card-body">
-                    <h3 class='card-title'>{{Recovered}}</h3>
-                    <p class="card-text"> Recovered</p>
+            <div class="col-3">
+                <div class="card bg-green text-center my_shadow">
+                    <div class="card-body">
+                        <h3 class='card-title'>{{Recovered}}</h3>
+                        <p class="card-text"> Recovered</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-3">
-            <div class="card bg-red text-center">
-                <div class="card-body">
-                    <h3 class='card-title'>{{Deaths}}</h3>
-                    <p class="card-text"> Deaths</p>
+            <div class="col-3">
+                <div class="card bg-red text-center my_shadow">
+                    <div class="card-body">
+                        <h3 class='card-title'>{{Deaths}}</h3>
+                        <p class="card-text"> Deaths</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-3">
-            <div class="card bg-orange text-center">
-                <div class="card-body">
-                    <h3 class='card-title'>{{Confirmed}}</h3>
-                    <p class="card-text">Total Confirmed</p>
+            <div class="col-3">
+                <div class="card bg-orange text-center my_shadow">
+                    <div class="card-body">
+                        <h3 class='card-title'>{{Confirmed}}</h3>
+                        <p class="card-text">Total Confirmed</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class='text-center'>
-    <img src="../media/figures/heat_map.jpg" alt="heat map of cases per state" />
-</div>
+    <div class='text-center'>
+        <a href="{%url 'stats'%}">
+            <h2>Click to see how India compares with other countries</h2>
+        </a>
+        <img src="../media/figures/heat_map.jpg" alt="heat map of cases per state" />
+    </div>
 
-<!-- <script>
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        console.log("Geolocation is not supported by this browser.");
-    }
+</body>
 
-    function showPosition(position) {
-
-        console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);
-    }
-</script> -->
-
-{%endblock content%}
+</html>
