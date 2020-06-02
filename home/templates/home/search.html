@@ -1,116 +1,94 @@
-{%extends 'home/base.html'%} {%load static%}{%block content%}
-<link rel="stylesheet" href="{%static 'home/search.css'%}" type="text/css">
-<link rel="stylesheet" href="{%static 'home/gradients.css'%}" type="text/css">
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="text-center">
-    <h1>{{State}}</h1>
-    <!-- this is needed to use text_to_speak in javascript  -->
-    <p id='text_to_speak' hidden> {{text_to_speak}} </p>
-</div>
-<div class="text-center mt-3">
-    <img id='play_btn' src="../media/icons/play.png" width="40" height="40" class="text-center" />
-</div>
+<head>
+    <meta charset="UTF-8">
+    <title>Search Result</title>
 
-<div class="container mt-5">
-    <div class="row mb-5">
-        <div class="col-4">
-            <div class="card text-dark bg-blue text-center my_shadow">
-                <div class="card-body">
-                    <h3 class='card-title'>{{Active}}</h3>
-                    <p class="card-text" id='Active'> Active cases</p>
-                </div>
-            </div>
-        </div>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-        <div class="col-4">
-            <div class="card text-dark bg-green text-center my_shadow">
-                <div class="card-body">
-                    <h3 class='card-title'>{{Recovered}}</h3>
-                    <p class="card-text" id='Recovered'> Recovered</p>
-                </div>
-            </div>
-        </div>
+    <link rel="stylesheet" href="{%static 'home/search.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'home/gradients.css'%}" type="text/css">
 
-        <div class="col-4">
-            <div class="card text-dark bg-red text-center my_shadow">
-                <div class="card-body">
-                    <h3 class='card-title'>{{Deaths}}</h3>
-                    <p class="card-text" id='Deaths'> Deaths</p>
-                </div>
-            </div>
-        </div>
+</head>
 
+<body>
+
+    <div class="text-center mt-5">
+        <h1>{{State}}</h1>
+        <!-- this is needed to use text_to_speak in javascript  -->
+        <p id='text_to_speak' hidden> {{text_to_speak}} </p>
     </div>
-    <div class="row">
-        <div class="col-4">
-            <div class="card text-dark bg-orange text-center my_shadow">
-                <div class="card-body">
-                    <h3 class='card-title'>{{Confirmed}}</h3>
-                    <p class="card-text" id='Confirmed'>Total Confirmed</p>
+    <div class="text-center mt-3">
+        <img id='play_btn' src="../media/icons/play.png" width="40" height="40" class="text-center" />
+    </div>
+
+    <div class="container mt-5">
+        <div class="row mb-5">
+            <div class="col-4">
+                <div class="card text-dark bg-blue text-center my_shadow">
+                    <div class="card-body">
+                        <h3 class='card-title'>{{Active}}</h3>
+                        <p class="card-text" id='Active'> Active cases</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-4">
-            <div class="card text-dark bg-purple text-center my_shadow">
-                <div class="card-body">
-                    <h3 class='card-title'>{{recover_percent}}%</h3>
-                    <p class="card-text" id='Confirmed'>Recovered</p>
+            <div class="col-4">
+                <div class="card text-dark bg-green text-center my_shadow">
+                    <div class="card-body">
+                        <h3 class='card-title'>{{Recovered}}</h3>
+                        <p class="card-text" id='Recovered'> Recovered</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-4">
-            <div class="card text-dark bg-lemon text-center my_shadow">
-                <div class="card-body">
-                    <h3 class='card-title'>{{death_percent}}%</h3>
-                    <p class="card-text" id='Confirmed'>Deaths</p>
+            <div class="col-4">
+                <div class="card text-dark bg-red text-center my_shadow">
+                    <div class="card-body">
+                        <h3 class='card-title'>{{Deaths}}</h3>
+                        <p class="card-text" id='Deaths'> Deaths</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="card text-dark bg-orange text-center my_shadow">
+                    <div class="card-body">
+                        <h3 class='card-title'>{{Confirmed}}</h3>
+                        <p class="card-text" id='Confirmed'>Total Confirmed</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card text-dark bg-purple text-center my_shadow">
+                    <div class="card-body">
+                        <h3 class='card-title'>{{recover_percent}}%</h3>
+                        <p class="card-text" id='Confirmed'>Recovered</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card text-dark bg-lemon text-center my_shadow">
+                    <div class="card-body">
+                        <h3 class='card-title'>{{death_percent}}%</h3>
+                        <p class="card-text" id='Confirmed'>Deaths</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
-<script>
-    if ('speechSynthesis' in window) {
-        var txtInput = document.getElementById('text_to_speak').textContent;
-
-        var tts = window.speechSynthesis;
-        var toSpeak = new SpeechSynthesisUtterance(txtInput);
-
-        toSpeak.pitch = 1;
-        toSpeak.rate = 1.6;
-
-        var play_btn = document.querySelector('#play_btn');
-
-        play_btn.addEventListener('click', () => {
-            if (!tts.speaking || tts.paused) {
-                // without cancel it doesnt speak anymore, try removing later
-                tts.cancel();
-                tts.speak(toSpeak);
-                console.log("started speaking");
-                play_btn.setAttribute("src", "../media/icons/pause.png")
-            } else if (tts.speaking) {
-                // tts.pause(); //this lags a bit
-                tts.cancel();
-                console.log("speaking cancelled");
-                play_btn.setAttribute("src", "../media/icons/play.png")
-
-            }
-
-        });
-        // show play icon when finished speaking 
-        toSpeak.onend = function(e) {
-            play_btn.setAttribute("src", "../media/icons/play.png");
-            console.log("speaking finished");
-
-        }
-    } else {
-        console.log('speechSynthesis not available');
-        play_btn.style.display = 'none';
-    }
-</script>
+    <script src="{% static 'home/search_result.js' %} "></script>
 
 
-{%endblock content%}
+</body>
+
+</html>

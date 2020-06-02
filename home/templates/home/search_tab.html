@@ -14,36 +14,33 @@
     <div class="text-center">
         <img src="/media/pics/search_heading.png" />
     </div>
+
     <div class="container">
         <div class="form-row">
-
             <div class="col-11">
-
                 <div class="container">
+
                     <form id="search_tab_form" action="{%url 'search'%}" method="get" autocomplete="off">
                         <div class="finder">
                             <div class="finder__outer">
                                 <div class="finder__inner">
                                     <div class="finder__icon" ref="icon"></div>
+
                                     <input class="finder__input" type="text" name="q" id="search_tab_transcript" />
                                 </div>
+
                                 <div class="my-auto popup">
                                     {%include 'home/google_mic.html'%}
-                                    <!-- <img style="cursor: pointer;" onclick="search_tab_startDictation()" src="../media/icons/google_mic2.png" /> -->
                                     <span class="popuptext" id="listening_popup">Listening...</span>
                                 </div>
+
                             </div>
                         </div>
                     </form>
+
                 </div>
-
-                <!-- <input class="search-bar" type="text" name="q" id="search_tab_transcript" placeholder="Search" spellcheck="false" /> -->
-
             </div>
-
-
         </div>
-
     </div>
 </body>
 

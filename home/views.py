@@ -117,7 +117,6 @@ def search(request):
             'Deaths': add_comas(Deaths),
             'Confirmed': add_comas(Confirmed),
             'State': target,
-            # 'percent': Confirmed/get_data()[3]*100,
             'recover_percent': recover_percent,
             'death_percent': death_percent,
             'text_to_speak': text_to_speak,
@@ -135,7 +134,7 @@ def stats(request):
     if data == 0:
         return redirect('stats')
 
-    # data from govt site and other api don't match so changing it
+    # data from govt site and other api doesn't match so changing it
     india_data =  get_data()
     data['india_confirmed'] = add_comas(india_data[3])
     data['india_recovered'] = add_comas(india_data[1])

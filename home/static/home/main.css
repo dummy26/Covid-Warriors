@@ -26,10 +26,6 @@ body {
      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
  } */
 
-.bg-steel {
-    background-color: #5f788a;
-}
-
 
 /* remove from here after navbar complete */
 
@@ -107,4 +103,8 @@ body {
 
 .site-header .navbar-nav .nav-link.active {
     font-weight: 500;
+}
+
+.bg-steel {
+    background-color: #5f788a;
 }

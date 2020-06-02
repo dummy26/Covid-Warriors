@@ -1,64 +1,3 @@
-/* Popup container - can be anything you want */
-
-.popup {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-
-/* The actual popup */
-
-.popup .popuptext {
-    visibility: hidden;
-    width: 160px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
-    position: absolute;
-    z-index: 1;
-    top: 125%;
-    left: 50%;
-    margin-left: -80px;
-}
-
-
-/* Toggle this class - hide and show the popup */
-
-.popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 0.5s;
-    animation: fadeIn 0.5;
-}
-
-
-/* Add animation (fade in the popup) */
-
-@-webkit-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-
 /* search bar  */
 
 html,
@@ -119,12 +58,6 @@ form {
     position: relative;
     flex: 1;
 }
-
-
-/* .finder__form {
-    flex: 1;
-    height: calc(100% + 3rem);
-} */
 
 .finder__input {
     height: calc(100% + 3rem);
@@ -189,24 +122,67 @@ form {
     transform: rotateZ(45deg) translate(-50%, 25px);
 }
 
-
-/* .processing .finder__icon {
-    transform-origin: 50%;
-    animation: spinner 0.3s linear infinite;
-    animation-delay: 0.5s;
-} */
-
 .active .finder__icon {
     transform: translateY(-5px);
 }
 
 
-/* 
-@keyframes spinner {
-    0% {
-        transform: rotateZ(45deg);
+/* Popup container - can be anything you want */
+
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/* The actual popup */
+
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+
+/* Toggle this class - hide and show the popup */
+
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 0.5s;
+    animation: fadeIn 0.5;
+}
+
+
+/* Add animation (fade in the popup) */
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
     }
-    100% {
-        transform: rotateZ(405deg);
+    to {
+        opacity: 1;
     }
-} */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
