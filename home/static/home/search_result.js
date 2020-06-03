@@ -21,7 +21,6 @@ if ('speechSynthesis' in window) {
             tts.cancel();
             console.log("speaking cancelled");
             play_btn.setAttribute("src", "../media/icons/play.png")
-
         }
 
     });
@@ -29,9 +28,17 @@ if ('speechSynthesis' in window) {
     toSpeak.onend = function(e) {
         play_btn.setAttribute("src", "../media/icons/play.png");
         console.log("speaking finished");
-
     }
+
 } else {
     console.log('speechSynthesis not available');
     play_btn.style.display = 'none';
 }
+
+//show national average when hovering on card
+$(document).ready(function() {
+    $('[data-toggle="popover"]').popover({
+        placement: 'top',
+        trigger: 'hover'
+    });
+});

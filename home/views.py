@@ -85,17 +85,22 @@ def search(request):
             Recovered = df[df['States/UT'] == target]['Recovered'].iloc[0]
             Deaths = df[df['States/UT'] == target]['Deaths'].iloc[0]
             Confirmed = df[df['States/UT'] == target]['Confirmed'].iloc[0]
-            Average_confirmed = df['Confirmed'].iloc[35].item() / 35
+            recover_percent = round(Recovered/Confirmed*100, 2)
+            death_percent = round(Deaths/Confirmed*100, 2)
+
             Average_active = df['Active'].iloc[35].item() / 35
+            Average_recovered = df['Recovered'].iloc[35].item() / 35
+            Average_deaths = df['Deaths'].iloc[35].item() / 35
+            Average_confirmed = df['Confirmed'].iloc[35].item() / 35
+
+            Average_recovered_percent = Average_recovered / Average_confirmed * 100
+            Average_deaths_percent =  Average_deaths / Average_confirmed * 100
 
         # if target is not in states this exception will be raised
         except IndexError as e:
             # this message will be shown on homepage
             messages.error(request, 'Could not find that')
             return redirect('homepage')
-
-        recover_percent = round(Recovered/Confirmed*100, 2)
-        death_percent = round(Deaths/Confirmed*100, 2)
 
         if Confirmed > Average_confirmed:
             text_to_speak = f"With {Confirmed} total confirmed cases, {target} is in worse condition compared to national average"
@@ -112,14 +117,21 @@ def search(request):
                 text_to_speak += f", also its {Active} active cases are lesser than national average."
 
         context = {
+            'State': target,
             'Active': add_comas(Active),
             'Recovered': add_comas(Recovered),
             'Deaths': add_comas(Deaths),
             'Confirmed': add_comas(Confirmed),
-            'State': target,
             'recover_percent': recover_percent,
             'death_percent': death_percent,
             'text_to_speak': text_to_speak,
+            'Average_active': add_comas(int(Average_active)),
+            'Average_recovered': add_comas(int(Average_recovered)),
+            'Average_deaths': add_comas(int(Average_deaths)),
+            'Average_confirmed': add_comas(int(Average_confirmed)),
+            'Average_recovered_percent': int(Average_recovered_percent),
+            'Average_deaths_percent' : int(Average_deaths_percent),
+
         }
 
         return render(request, 'home/search.html', context)
@@ -135,7 +147,7 @@ def stats(request):
         return redirect('stats')
 
     # data from govt site and other api doesn't match so changing it
-    india_data =  get_data()
+    india_data = get_data()
     data['india_confirmed'] = add_comas(india_data[3])
     data['india_recovered'] = add_comas(india_data[1])
     data['india_deaths'] = add_comas(india_data[2])
