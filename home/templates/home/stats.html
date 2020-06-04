@@ -1,4 +1,4 @@
-<!-- {%load static%} -->
+{%load static%}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,29 +16,12 @@
     </metadata>
     <!--Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" type="text/css" href="{%static 'home/stats.css'%}"> -->
-    <style>
-        .container {
-            width: 100%;
-            margin: 15px auto;
-        }
-        
-        path {
-            fill: #b5a8ed;
-            stroke: white;
-        }
-        
-        path:hover {
-            fill: gray;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{%static 'home/stats.css'%}">
 </head>
 
 <body>
-    <div class='text-center mt-5'>
-        <h3>
-            Worldwide Covid Cases
-        </h3>
+    <div class='heading'>
+        <h1>Worldwide Covid Cases</h1>
     </div>
 
     <div class="container">

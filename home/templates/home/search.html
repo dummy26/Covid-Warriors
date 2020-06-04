@@ -16,7 +16,7 @@
 
 <body>
 
-    <div class="text-center mt-5">
+    <div class="heading">
         <h1>{{State}}</h1>
         <!-- this is needed to use text_to_speak in javascript  -->
         <p id='text_to_speak' hidden> {{text_to_speak}} </p>
@@ -30,8 +30,8 @@
             <div class="col-4">
                 <div class="card text-dark bg-blue text-center my_shadow" data-toggle="popover" title="National Average: {{Average_active}}">
                     <div class="card-body">
-                        <h3 class='card-title'>{{Active}}</h3>
-                        <p class="card-text"> Active cases</p>
+                        <h1 class='card-title'>{{Active}}</h1>
+                        <h4 class="card-text"> Active cases</h4>
                     </div>
                 </div>
             </div>
@@ -39,8 +39,8 @@
             <div class="col-4 ">
                 <div class="card text-dark bg-green text-center my_shadow" data-toggle="popover" title="National Average: {{Average_recovered}}">
                     <div class="card-body">
-                        <h3 class='card-title'>{{Recovered}}</h3>
-                        <p class="card-text"> Recovered</p>
+                        <h1 class='card-title'>{{Recovered}}</h1>
+                        <h4 class="card-text"> Recovered</h4>
                     </div>
                 </div>
             </div>
@@ -48,19 +48,20 @@
             <div class="col-4 ">
                 <div class="card text-dark bg-red text-center my_shadow" data-toggle="popover" title="National Average: {{Average_deaths}}">
                     <div class="card-body">
-                        <h3 class='card-title'>{{Deaths}}</h3>
-                        <p class="card-text"> Deaths</p>
+                        <h1 class='card-title'>{{Deaths}}</h1>
+                        <h4 class="card-text"> Deaths</h4>
                     </div>
                 </div>
             </div>
 
         </div>
-        <div class="row ">
-            <div class="col-4 ">
+
+        <div class="row">
+            <div class="col-4">
                 <div class="card text-dark bg-orange text-center my_shadow" data-toggle="popover" title="National Average: {{Average_confirmed}}">
                     <div class="card-body">
-                        <h3 class='card-title'>{{Confirmed}}</h3>
-                        <p class="card-text">Total Confirmed</p>
+                        <h1 class='card-title'>{{Confirmed}}</h1>
+                        <h4 class="card-text">Total Confirmed</h4>
                     </div>
                 </div>
             </div>
@@ -68,8 +69,8 @@
             <div class="col-4 ">
                 <div class="card text-dark bg-purple text-center my_shadow" data-toggle="popover" title="National Average: {{Average_recovered_percent}}%">
                     <div class="card-body">
-                        <h3 class='card-title '>{{recover_percent}}%</h3>
-                        <p class="card-text">Recovered</p>
+                        <h1 class='card-title '>{{recover_percent}}%</h1>
+                        <h4 class="card-text">Recovered</h4>
                     </div>
                 </div>
             </div>
@@ -77,8 +78,8 @@
             <div class="col-4 ">
                 <div class="card text-dark bg-lemon text-center my_shadow" data-toggle="popover" title="National Average: {{Average_deaths_percent}}%">
                     <div class="card-body">
-                        <h3 class='card-title'>{{death_percent}}%</h3>
-                        <p class="card-text">Deaths</p>
+                        <h1 class='card-title'>{{death_percent}}%</h1>
+                        <h4 class="card-text">Deaths</h4>
                     </div>
                 </div>
             </div>

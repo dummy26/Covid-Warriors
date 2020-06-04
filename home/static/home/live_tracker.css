@@ -1,3 +1,26 @@
+body,
+html {
+    background-color: #0e1531;
+}
+
+.heading {
+    font-size: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
 .my_shadow {
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card {
+    transition: 0.4s all;
+}
+
+.card:hover {
+    transform: translateY(-4px);
 }
