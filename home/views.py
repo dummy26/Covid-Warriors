@@ -148,8 +148,9 @@ def stats(request):
 
     # data from govt site and other api doesn't match so changing it
     india_data = get_data()
-    data['india_confirmed'] = add_comas(india_data[3])
-    data['india_recovered'] = add_comas(india_data[1])
-    data['india_deaths'] = add_comas(india_data[2])
-
-    return render(request, 'home/stats.html', data)
+    data[55] = {'Confirmed': add_comas(india_data[3]),
+     'Recovered': add_comas(india_data[1]),
+     'Deaths': add_comas(india_data[2])
+    }
+    
+    return render(request, 'home/stats.html', {"data": data})

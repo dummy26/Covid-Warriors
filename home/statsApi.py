@@ -17,40 +17,14 @@ def get_stats():
         df = pd.DataFrame.from_dict(t)
         df.drop(["CountryCode", "Slug", "Date"], axis=1, inplace=True)
 
-        india_confirmed = df[df['Country'] == 'India']['TotalConfirmed'].item()
-        china_confirmed = df[df['Country'] == 'China']['TotalConfirmed'].item()
-        usa_confirmed = df[df['Country'] ==
-                           'United States of America']['TotalConfirmed'].item()
-        confirmed = [india_confirmed, china_confirmed, usa_confirmed]
+        countries = ['Afghanistan', 'Angola', 'Albania', 'United Arab Emirates', 'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan', 'Burundi', 'Belgium', 'Benin', 'Burkina Faso', 'Bangladesh', 'Bulgaria', 'Bosnia and Herzegovina', 'Belarus', 'Bolivia', 'Brazil', 'Bhutan', 'Botswana', 'Central African Republic', 'Canada', 'Switzerland', 'Chile', 'China', "Côte d'Ivoire", 'Cameroon', 'Colombia', 'Costa Rica', 'Cuba', 'Cyprus', 'Czech Republic', 'Germany', 'Djibouti', 'Denmark','Dominican Republic', 'Algeria', 'Ecuador', 'Egypt', 'Eritrea', 'Spain', 'Ethiopia', 'Finland', 'France', 'Gabon', 'United Kingdom', 'Ghana', 'Guinea', 'Equatorial Guinea', 'Greece', 'Guatemala', 'Guyana', 'Hungary', 'Indonesia', 'India', 'Ireland', 'Iran, Islamic Republic of', 'Iraq', 'Iceland', 'Israel', 'Italy', 'Jordan', 'Japan', 'Kazakhstan', 'Kenya', 'Kyrgyzstan', 'Cambodia', 'Korea (South)', 'Republic of Kosovo', 'Kuwait', 'Lao PDR', 'Liberia', 'Libya', 'Sri Lanka', 'Lithuania', 'Luxembourg', 'Latvia', 'Morocco', 'Moldova', 'Madagascar', 'Mexico', 'Macedonia, Republic of', 'Mali', 'Myanmar', 'Montenegro', 'Mongolia', 'Mozambique', 'Mauritania', 'Malaysia', 'Namibia',  'Niger', 'Nigeria', 'Nicaragua', 'Netherlands', 'Norway', 'Nepal', 'New Zealand', 'Oman', 'Pakistan', 'Panama', 'Peru', 'Philippines', 'Papua New Guinea', 'Poland', 'Portugal', 'Paraguay', 'Qatar', 'Romania', 'Russian Federation', 'Western Sahara', 'Saudi Arabia', 'Sudan', 'South Sudan', 'Senegal', 'Sierra Leone', 'Somalia', 'Serbia', 'Suriname', 'Slovakia', 'Sweden', 'Swaziland', 'Syrian Arab Republic (Syria)', 'Chad', 'Togo', 'Thailand', 'Tajikistan', 'Tunisia', 'Turkey', 'Taiwan, Republic of China', 'Tanzania, United Republic of', 'Uganda', 'Ukraine', 'Uruguay', 'United States of America', 'Uzbekistan', 'Venezuela (Bolivarian Republic)', 'Viet Nam', 'Yemen', 'South Africa', 'Zambia', 'Zimbabwe']
 
-        india_recovered = df[df['Country'] == 'India']['TotalRecovered'].item()
-        china_recovered = df[df['Country'] == 'China']['TotalRecovered'].item()
-        usa_recovered = df[df['Country'] ==
-                           'United States of America']['TotalRecovered'].item()
-        recovered = [india_recovered, china_recovered, usa_recovered]
+        data = []
+        for country in countries:
+            data.append({'Confirmed': add_comas(df[df['Country'] == country]['TotalConfirmed'].item()),
+            'Recovered': add_comas(df[df['Country'] == country]['TotalRecovered'].item()),
+            'Deaths': add_comas(df[df['Country'] == country]['TotalDeaths'].item()),
+            })
+            # print(country, data[countries.index(country)])
 
-        india_deaths = df[df['Country'] == 'India']['TotalDeaths'].item()
-        china_deaths = df[df['Country'] == 'China']['TotalDeaths'].item()
-        usa_deaths = df[df['Country'] ==
-                        'United States of America']['TotalDeaths'].item()
-        deaths = [india_deaths, china_deaths, usa_deaths]
-        india_recovered_percent = round(
-            india_recovered / india_confirmed * 100, 2)
-        china_recovered_percent = round(
-            china_recovered / china_confirmed * 100, 2)
-        usa_recovered_percent = round(usa_recovered / usa_confirmed * 100)
-        recovered_percent = [india_recovered_percent,
-                             china_recovered_percent, usa_recovered_percent]
-
-        india_deaths_percent = round(india_deaths / india_confirmed * 100, 2)
-        china_deaths_percent = round(china_deaths / china_confirmed * 100, 2)
-        usa_deaths_percent = round(usa_deaths / usa_confirmed * 100, 2)
-        deaths_percent = [india_deaths_percent,
-                          china_deaths_percent, usa_deaths_percent]
-
-        return {'india_confirmed': add_comas(india_confirmed), 'china_confirmed': add_comas(china_confirmed), 'usa_confirmed': add_comas(usa_confirmed),
-                'india_recovered': add_comas(india_recovered), 'china_recovered': add_comas(china_recovered), 'usa_recovered': add_comas(usa_recovered),
-                'india_deaths': add_comas(india_deaths), 'china_deaths': add_comas(china_deaths), 'usa_deaths': add_comas(usa_deaths),
-                'india_recovered_percent': india_recovered_percent, 'china_recovered_percent': china_recovered_percent, 'usa_recovered_percent': usa_recovered_percent,
-                'india_deaths_percent': india_deaths_percent, 'china_deaths_percent': china_deaths_percent, 'usa_deaths_percent': usa_deaths_percent,
-                }
+        return data
