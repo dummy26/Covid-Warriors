@@ -3,7 +3,7 @@ var confirmed_data = [];
 var deaths_data = [];
 var myChart;
 
-
+// toggle tabs 
 $("document").ready(function() {
     $(".tab-slider--body").hide();
     $(".tab-slider--body:first").show();
@@ -15,12 +15,12 @@ $(".tab-slider--nav li").click(function() {
     $("#" + activeTab).fadeIn();
     if ($(this).attr("rel") == "tab2") {
         $('.tab-slider--tabs').addClass('slide');
+        // check Confirmed radio button 
         document.getElementById("Confirmed").checked = true;
-
+        // populate labels, confirmed_data, deaths_data from json file saved by statsApi if they are empty 
         $.getJSON("static/home/chart_data.json", function(data) {
 
             if (labels.length == 0) {
-                console.log("here");
                 for (var key in data) {
                     labels.push(key);
                     confirmed_data.push(data[key]["Confirmed"]);
@@ -33,11 +33,12 @@ $(".tab-slider--nav li").click(function() {
     } else {
         $('.tab-slider--tabs').removeClass('slide');
     }
+
     $(".tab-slider--nav li").removeClass("active");
     $(this).addClass("active");
 });
 
-
+//setting onclick of radios
 var radios = document.querySelectorAll('input[name="radio"]')
 radios[0].onclick = function() {
     displayChart(labels, confirmed_data, "Confirmed Cases");
@@ -49,6 +50,7 @@ radios[1].onclick = function() {
 
 //displays chart
 function displayChart(labels, confirmed_data, title, color = "#F89C06") {
+    //to render new chart every time
     if (myChart) {
         myChart.destroy();
     }
@@ -73,7 +75,6 @@ function displayChart(labels, confirmed_data, title, color = "#F89C06") {
                 text: title,
                 fontSize: 25,
                 fontColor: 'white'
-
             },
             legend: {
                 display: false,

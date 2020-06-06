@@ -27,7 +27,8 @@ def get_stats():
                          'Deaths': add_comas(df[df['Country'] == country]['TotalDeaths'].item()),
                          })
 
-        temp = {
+# data for charts in stats.html 
+        chart_json_data = {
             "USA": {
                 "Confirmed": df[df['Country'] == "United States of America"]['TotalConfirmed'].item(),
                 "Deaths": df[df['Country'] == "United States of America"]['TotalDeaths'].item()
@@ -47,12 +48,10 @@ def get_stats():
 
             "Spain": {"Confirmed": df[df['Country'] == "Spain"]['TotalConfirmed'].item(),
                       "Deaths": df[df['Country'] == "Spain"]['TotalDeaths'].item()
-
                       },
 
             "Italy": {"Confirmed": df[df['Country'] == "Italy"]['TotalConfirmed'].item(),
                       "Deaths": df[df['Country'] == "Italy"]['TotalDeaths'].item()
-
                       },
 
             "India": {"Confirmed": df[df['Country'] == "India"]['TotalConfirmed'].item(),
@@ -62,9 +61,8 @@ def get_stats():
 
             "France": {"Confirmed": df[df['Country'] == "France"]['TotalConfirmed'].item(),
                        "Deaths": df[df['Country'] == "France"]['TotalDeaths'].item()
-
                        },
-                       
+
             "Germany": {"Confirmed": df[df['Country'] == "Germany"]['TotalConfirmed'].item(),
                         "Deaths": df[df['Country'] == "Germany"]['TotalDeaths'].item()
                         },
@@ -82,14 +80,10 @@ def get_stats():
 
             "Iran": {"Confirmed": df[df['Country'] == "Iran, Islamic Republic of"]['TotalConfirmed'].item(),
                      "Deaths": df[df['Country'] == "Iran, Islamic Republic of"]['TotalDeaths'].item()
-
                      },
         }
-        # temp["Others"] = x.get('Global').get('TotalConfirmed') - temp["USA"] - temp["Brazil"] - temp["Russia"] - temp["Spain"] - \
-        #     temp["United Kingdom"] - temp["Italy"] - temp["India"] - \
-        #     temp["Germany"] - temp["Peru"] - temp["Turkey"] - temp["Iran"]
 
         out_file = open("home/static/home/chart_data.json", "w")
-        json.dump(temp, out_file)
+        json.dump(chart_json_data, out_file)
 
         return data

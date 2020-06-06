@@ -24,27 +24,22 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarToggle">
                     <div class="navbar-nav mr-auto">
-                        <a class="nav-item nav-link" href="{%url 'homepage'%}">Home</a>
-                        <a class="nav-item nav-link" href="{%url 'live_tracker'%}">Live Tracker</a>
-                        <a class="nav-item nav-link" href="{%url 'stats'%}">Stats</a>
+                        <a class="nav-item nav-link" href="{%url 'india_tracker'%}">India Tracker</a>
+                        <a class="nav-item nav-link" href="{%url 'world_tracker'%}">World Tracker</a>
 
-                        <!-- Search Form -->
-                        <form id="search_form" method="get" action="{%url 'search'%}">
+                        <!-- <form id="search_form" method="get" action="{%url 'search'%}">
                             <div class="speech">
                                 <input type="text" name="q" id="transcript" placeholder="Search" />
 
                                 <div class="popup">
                                     <img onclick="startDictation()" src="../media/icons/google_mic2.png" />
-                                    <!-- {%include 'home/google_mic.html'%} -->
                                     <span class="popuptext" id="listening_popup">Listening...</span>
                                 </div>
 
                             </div>
-                        </form>
+                        </form> -->
 
                         <a class="nav-item nav-link" href="{%url 'search_tab'%}">Search Tab</a>
-                        <a class="nav-item nav-link" href="#">Game</a>
-                        <a class="nav-item nav-link" href="#">About</a>
                     </div>
                 </div>
             </div>

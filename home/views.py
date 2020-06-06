@@ -26,7 +26,7 @@ class ArticleDetailView(DetailView):
     model = Article
 
 
-def live_tracker(request):
+def india_tracker(request):
     # save_pie_chart()
     save_heat_map()
     data = get_data()
@@ -36,7 +36,7 @@ def live_tracker(request):
         'Deaths': add_comas(data[2]),
         'Confirmed': add_comas(data[3]),
     }
-    return render(request, 'home/live_tracker.html', context)
+    return render(request, 'home/india_tracker.html', context)
 
 
 def search(request):
@@ -141,10 +141,10 @@ def search_tab(request):
     return render(request, 'home/search_tab.html')
 
 
-def stats(request):
+def world_tracker(request):
     data = get_stats()
     if data == 0:
-        return redirect('stats')
+        return redirect('world_tracker')
 
     # data from govt site and other api doesn't match so changing it
     india_data = get_data()
@@ -153,4 +153,4 @@ def stats(request):
      'Deaths': add_comas(india_data[2])
     }
     
-    return render(request, 'home/stats.html', {"data": data})
+    return render(request, 'home/world_tracker.html', {"data": data})

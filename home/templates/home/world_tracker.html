@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Stats</title>
+    <title>World Tracker</title>
     <metadata>
         <views>
             <view h="647.825177808" padding="0" w="1000">
@@ -18,7 +18,7 @@
     <!--Bootstrap CSS -->
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{%static 'home/stats.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'home/world_tracker.css'%}">
 </head>
 
 <body>
@@ -40,15 +40,14 @@
         <div id="tab2" class="tab-slider--body">
             <h2>Covid Chart</h2>
 
-
             <div class="radios">
                 <form>
                     <label>
-                        <input id="Confirmed" type="radio" name="radio" checked/>
+                        <input id="Confirmed" type="radio" name="radio" checked />
                         <span>Confirmed</span>
                     </label>
                     <label>
-                        <input id="Deaths" type="radio" name="radio"/>
+                        <input id="Deaths" type="radio" name="radio" />
                         <span>Deaths</span>
                     </label>
                 </form>
@@ -57,7 +56,7 @@
             <div id="chartDiv">
                 <canvas id="myChart">
                     <p>covid chart</p>
-            </canvas>
+                </canvas>
 
             </div>
 
@@ -71,7 +70,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
-    <script src="{%static 'home/stats.js'%}"></script>
+    <script src="{%static 'home/world_tracker.js'%}"></script>
 
 </body>
 

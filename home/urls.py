@@ -10,9 +10,9 @@ urlpatterns = [
     path('', ArticleListView.as_view(), name='homepage'),
     # change when article tab ready 
     path('article/<int:pk>', ArticleDetailView.as_view(), name='article-detail'),
-    path('live_tracker', views.live_tracker, name='live_tracker'),
+    path('india_tracker', views.india_tracker, name='india_tracker'),
     path('search', views.search, name='search'),
-    path('stats', views.stats, name='stats'),
+    path('world_tracker', views.world_tracker, name='world_tracker'),
     path('search_tab', views.search_tab, name='search_tab')
 ]
 
