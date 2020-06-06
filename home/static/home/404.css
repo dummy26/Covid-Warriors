@@ -1,0 +1,57 @@
+body {
+    background-color: #EEEEEE;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    margin-top: 50px;
+    margin-bottom: 60px;
+    font-size: 40px;
+}
+
+#container {
+    width: 600px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.button {
+    color: #2196f3;
+    font-size: 20px;
+    text-decoration: none;
+    border: 1px solid #2196f3;
+    padding: .5em;
+    border-radius: 5px;
+    transition: all .3s linear;
+}
+
+.button:hover {
+    background-color: #2196f3;
+    color: white;
+}
+
+.line {
+    fill: none;
+    stroke: #000000;
+    stroke-width: 5;
+    stroke-dasharray: 50 50;
+}
+
+.anim {
+    -webkit-animation: swirls 4s linear infinite;
+    -moz-animation: swirls 4s linear infinite;
+    -o-animation: swirls 4s linear infinite;
+    animation: swirls 4s linear infinite;
+}
+
+@keyframes swirls {
+    from {
+        stroke-dashoffset: 0;
+    }
+    to {
+        stroke-dashoffset: 100;
+    }
+}

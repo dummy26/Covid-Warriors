@@ -25,5 +25,9 @@ html {
     transform: translateY(-4px);
 }
 
+#play_btn {
+    cursor: pointer;
+}
+
 
 /* #0e1531 -> backgournd of website */

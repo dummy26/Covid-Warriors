@@ -99,8 +99,8 @@ def search(request):
         # if target is not in states this exception will be raised
         except IndexError as e:
             # this message will be shown on homepage
-            messages.error(request, 'Could not find that')
-            return redirect('homepage')
+            # messages.error(request, 'Could not find that')
+            return redirect('404')
 
         if Confirmed > Average_confirmed:
             text_to_speak = f"With {Confirmed} total confirmed cases, {target} is in worse condition compared to national average"
@@ -134,11 +134,15 @@ def search(request):
 
         }
 
-        return render(request, 'home/search.html', context)
+        return render(request, 'home/search_result.html', context)
 
 
 def search_tab(request):
     return render(request, 'home/search_tab.html')
+
+
+def page404(request):
+    return render(request, 'home/404.html')
 
 
 def world_tracker(request):

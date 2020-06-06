@@ -1,27 +1,28 @@
-var labels = [];
-var confirmed_data = [];
-var deaths_data = [];
-var myChart;
+let labels = [];
+let confirmed_data = [];
+let deaths_data = [];
+let myChart;
 
 // toggle tabs 
-$("document").ready(function() {
+$("document").ready(() => {
     $(".tab-slider--body").hide();
     $(".tab-slider--body:first").show();
 });
 
+// don't make this arrow func cuz we can't access "this" in arrow funcs
 $(".tab-slider--nav li").click(function() {
     $(".tab-slider--body").hide();
-    var activeTab = $(this).attr("rel");
+    let activeTab = $(this).attr("rel");
     $("#" + activeTab).fadeIn();
     if ($(this).attr("rel") == "tab2") {
         $('.tab-slider--tabs').addClass('slide');
         // check Confirmed radio button 
         document.getElementById("Confirmed").checked = true;
         // populate labels, confirmed_data, deaths_data from json file saved by statsApi if they are empty 
-        $.getJSON("static/home/chart_data.json", function(data) {
+        $.getJSON("static/home/chart_data.json", (data) => {
 
             if (labels.length == 0) {
-                for (var key in data) {
+                for (let key in data) {
                     labels.push(key);
                     confirmed_data.push(data[key]["Confirmed"]);
                     deaths_data.push(data[key]["Deaths"]);
@@ -39,12 +40,12 @@ $(".tab-slider--nav li").click(function() {
 });
 
 //setting onclick of radios
-var radios = document.querySelectorAll('input[name="radio"]')
-radios[0].onclick = function() {
+let radios = document.querySelectorAll('input[name="radio"]')
+radios[0].onclick = () => {
     displayChart(labels, confirmed_data, "Confirmed Cases");
 }
 
-radios[1].onclick = function() {
+radios[1].onclick = () => {
     displayChart(labels, deaths_data, "Death Cases", "#CB0C23");
 }
 
@@ -54,9 +55,9 @@ function displayChart(labels, confirmed_data, title, color = "#F89C06") {
     if (myChart) {
         myChart.destroy();
     }
-    var ctx = document.getElementById("myChart").getContext('2d');
+    let ctx = document.getElementById("myChart").getContext('2d');
 
-    var data = {
+    let data = {
         labels: labels,
         datasets: [{
             label: title,
@@ -98,7 +99,7 @@ function displayChart(labels, confirmed_data, title, color = "#F89C06") {
 }
 
 //popover on hover in map
-$(document).ready(function() {
+$(document).ready(() => {
     $('[data-toggle="popover"]').popover({
         placement: 'top',
         trigger: 'hover'
