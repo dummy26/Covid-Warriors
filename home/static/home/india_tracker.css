@@ -1,6 +1,7 @@
 body,
 html {
     background-color: #0e1531;
+    /* background-color: #EEEEEE; */
 }
 
 .heading {
@@ -11,6 +12,11 @@ html {
     text-align: center;
     margin-top: 50px;
     margin-bottom: 20px;
+}
+
+.pie_charts {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .my_shadow {

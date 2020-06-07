@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Article
 from django.contrib import messages
 from django.views.generic import ListView, DetailView
-from .IndiaApi import save_heat_map, save_pie_chart, save_json, get_data
+from .IndiaApi import save_data, get_data, save_json
 from .statsApi import get_stats
 from .utils import add_comas
 import json
@@ -27,14 +27,16 @@ class ArticleDetailView(DetailView):
 
 
 def india_tracker(request):
-    # save_pie_chart()
-    save_heat_map()
+    # save_heat_map()
+    save_json()
     data = get_data()
     context = {
         'Active': add_comas(data[0]),
         'Recovered': add_comas(data[1]),
         'Deaths': add_comas(data[2]),
         'Confirmed': add_comas(data[3]),
+        'recover_percent': round(data[1]/data[3]*100, 2),
+        'death_percent': round(data[2]/data[3]*100, 2),
     }
     return render(request, 'home/india_tracker.html', context)
 
@@ -43,7 +45,7 @@ def search(request):
     # when someone searches and submits form it's a get request
     if request.method == 'GET':
         # gets data from govt site and saves it in data.txt
-        save_json()
+        save_data()
 
         df = pandas.read_json('home/data.txt')
         df.drop(['Sr.No'], axis=1, inplace=True)

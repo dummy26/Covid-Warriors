@@ -1,19 +1,22 @@
+import json
+import geopandas as gpd
+from bs4 import BeautifulSoup
+import requests
+import matplotlib.pyplot as plt
 import pandas as pd
 import matplotlib
-# To solve RuntimeError 
+# To solve RuntimeError
 matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-import requests
-from bs4 import BeautifulSoup
-import geopandas as gpd
-import json
 
 url = 'https://www.mohfw.gov.in/'
 web_content = requests.get(url).content
 soup = BeautifulSoup(web_content, "html.parser")
 
 # remove any newlines and extra spaces from left and right
+
+
 def extract_contents(row): return [x.text.replace('\n', '') for x in row]
+
 
 stats = []
 # find all table rows and data cells within
@@ -32,7 +35,7 @@ state_data = pd.DataFrame(data=stats, columns=new_cols)
 # Cases being reassigned to states row causes problem when mapping to int because of missing value
 state_data.drop(index=35, axis=0, inplace=True)
 
-# converting string to int 
+# converting string to int
 state_data['Active'] = state_data['Active'].map(int)
 state_data['Recovered'] = state_data['Recovered'].map(int)
 state_data['Deaths'] = state_data['Deaths'].map(int)
@@ -45,29 +48,45 @@ group_size = [state_data['Active'].iloc[35].item(),
               state_data['Confirmed'].iloc[35].item()
               ]
 
+
+def save_json():
+    # pie_data = state_data.to_json()
+    myStates = ["Maharashtra", "Tamil Nadu", "Delhi", "Gujarat", "Rajasthan",
+              "Uttar Pradesh", "Madhya Pradesh", "West Bengal", "Karnataka", "Bihar"]
+    pie_data = {}
+    myStates_confirmed = 0
+    myStates_deaths = 0
+    for state in myStates:
+        confirmed = state_data[state_data["States/UT"] == state]["Confirmed"].item()
+        deaths = state_data[state_data["States/UT"] == state]["Deaths"].item()
+        pie_data[state] = {
+            "Confirmed": confirmed,
+            "Deaths": deaths
+        }
+        myStates_confirmed += confirmed
+        myStates_deaths += deaths
+
+
+    pie_data["Others"] = {
+        "Confirmed": state_data['Confirmed'].iloc[35].item() - myStates_confirmed,
+        "Deaths": state_data['Deaths'].iloc[35].item() - myStates_deaths
+    }
+
+    out_file = open("home/static/home/india_pie_data.json", "w")
+    json.dump(pie_data, out_file)
+
+
 # Used in views.live_tracker to get group_size
 def get_data():
     return group_size
 
-# Saves data.txt which is used in views.search 
-def save_json():
+# Saves data.txt which is used in views.search
+
+
+def save_data():
     data_json = state_data.to_json()
     with open('home/data.txt', 'w') as f:
         f.write(data_json)
-
-
-def save_pie_chart():
-    group_labels = ['Active\n' + str(group_size[0]),
-                    'Recovered\n' + str(group_size[1]),
-                    'Deaths\n' + str(group_size[2]),
-                    'Confirmed\n' + str(group_size[3])]
-    plt.pie(group_size, labels=group_labels)
-    central_circle = plt.Circle((0, 0), 0.5, color='white')
-    fig = plt.gcf()
-    fig.gca().add_artist(central_circle)
-    plt.title('Distribution of cases')
-    fig.set_size_inches(5, 3)
-    plt.savefig('./media/figures/pie_chart.jpg')
 
 
 def save_heat_map():

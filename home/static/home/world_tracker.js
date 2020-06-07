@@ -18,6 +18,7 @@ $(".tab-slider--nav li").click(function() {
         $('.tab-slider--tabs').addClass('slide');
         // check Confirmed radio button 
         document.getElementById("Confirmed").checked = true;
+
         // populate labels, confirmed_data, deaths_data from json file saved by statsApi if they are empty 
         $.getJSON("static/home/chart_data.json", (data) => {
 
@@ -28,7 +29,7 @@ $(".tab-slider--nav li").click(function() {
                     deaths_data.push(data[key]["Deaths"]);
                 }
             }
-            displayChart(labels, confirmed_data, "Confirmed Cases");
+            displayChart(confirmed_data, "Confirmed Cases");
         });
 
     } else {
@@ -42,15 +43,15 @@ $(".tab-slider--nav li").click(function() {
 //setting onclick of radios
 let radios = document.querySelectorAll('input[name="radio"]')
 radios[0].onclick = () => {
-    displayChart(labels, confirmed_data, "Confirmed Cases");
+    displayChart(confirmed_data, "Confirmed Cases");
 }
 
 radios[1].onclick = () => {
-    displayChart(labels, deaths_data, "Death Cases", "#CB0C23");
+    displayChart(deaths_data, "Death Cases", "#CB0C23");
 }
 
 //displays chart
-function displayChart(labels, confirmed_data, title, color = "#F89C06") {
+function displayChart(myData, title, color = "#F89C06") {
     //to render new chart every time
     if (myChart) {
         myChart.destroy();
@@ -61,7 +62,7 @@ function displayChart(labels, confirmed_data, title, color = "#F89C06") {
         labels: labels,
         datasets: [{
             label: title,
-            data: confirmed_data,
+            data: myData,
             backgroundColor: color,
             hoverBackgroundColor: "#8D8586"
         }]
