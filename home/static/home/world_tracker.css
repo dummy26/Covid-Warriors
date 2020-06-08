@@ -8,7 +8,7 @@ body {
 
 .heading {
     font-size: 20px;
-    color: #345F90;
+    color: #fff;
     text-transform: uppercase;
     font-weight: 900;
     text-align: center;
@@ -19,7 +19,7 @@ body {
 h2 {
     display: inline;
     padding: 3px 10px;
-    border: 5px solid #345F90;
+    border: 5px solid #fff;
 }
 
 .container {
@@ -95,7 +95,7 @@ label span:before {
 /* World map  */
 
 path {
-    fill: white;
+    fill: #3F51B5;
     stroke: #25b7c4;
 }
 
