@@ -16,32 +16,32 @@
     </div>
 
     <div class="container">
-        <div class="form-row">
-            <div class="col-11">
-                <div class="container">
 
-                    <form id="search_tab_form" action="{%url 'search'%}" method="get" autocomplete="off">
-                        <div class="finder">
-                            <div class="finder__outer">
-                                <div class="finder__inner">
-                                    <div class="finder__icon" ref="icon"></div>
+        <form id="search_tab_form" action="{%url 'search'%}" method="get" autocomplete="off">
+            <div class="finder">
 
-                                    <input class="finder__input" type="text" name="q" id="search_tab_transcript" placeholder="Enter an Indian state" />
-                                </div>
+                <div class="finder__outer">
+                    <div class="finder__inner">
 
-                                <div class="my-auto popup">
-                                    {%include 'home/google_mic.html'%}
-                                    <span class="popuptext" id="listening_popup">Listening...</span>
-                                </div>
+                        <div class="finder__icon" ref="icon"></div>
+                        <input class="finder__input" type="text" name="q" id="search_tab_transcript" placeholder="Enter an Indian state" spellcheck="false" />
 
-                            </div>
-                        </div>
-                    </form>
+                    </div>
+
+
+                    <div class="my-auto popup">
+                        {%include 'home/google_mic.html'%}
+                        <span class="popuptext" id="listening_popup">Listening...</span>
+                    </div>
 
                 </div>
+
             </div>
-        </div>
+        </form>
     </div>
+
+    <div class="suggestions"> </div>
+
 </body>
 
 
