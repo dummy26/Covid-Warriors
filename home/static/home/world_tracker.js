@@ -64,7 +64,6 @@ function displayChart(myData, title, color = "#F89C06") {
             label: title,
             data: myData,
             backgroundColor: color,
-            hoverBackgroundColor: "#8D8586"
         }]
     }
 
@@ -76,7 +75,7 @@ function displayChart(myData, title, color = "#F89C06") {
                 display: true,
                 text: title,
                 fontSize: 25,
-                fontColor: 'white'
+                fontColor: '#616161'
             },
             legend: {
                 display: false,
