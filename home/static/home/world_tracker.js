@@ -56,7 +56,7 @@ function displayChart(myData, title, color = "#F89C06") {
     if (myChart) {
         myChart.destroy();
     }
-    let ctx = document.getElementById("myChart").getContext('2d');
+    let ctx = document.getElementById("chartCanvas").getContext('2d');
 
     let data = {
         labels: labels,
@@ -74,7 +74,7 @@ function displayChart(myData, title, color = "#F89C06") {
             title: {
                 display: true,
                 text: title,
-                fontSize: 25,
+                fontSize: 20,
                 fontColor: '#616161'
             },
             legend: {
@@ -83,13 +83,13 @@ function displayChart(myData, title, color = "#F89C06") {
             scales: {
                 yAxes: [{
                     ticks: {
-                        fontSize: 18,
+                        fontSize: 15,
                         fontColor: 'white'
                     }
                 }],
                 xAxes: [{
                     ticks: {
-                        fontSize: 18,
+                        fontSize: 15,
                         fontColor: 'white'
                     }
                 }]
