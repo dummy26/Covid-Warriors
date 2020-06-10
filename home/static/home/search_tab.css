@@ -1,24 +1,16 @@
-/* search bar  */
-
 html,
 body {
     padding: 0;
     margin: 0;
     color: #292929;
-    font-family: 'Roboto', sans-serif;
-}
-
-.suggestions {
-    width: 600px;
-    height: 400px;
-    margin: 0 auto;
+    font-family: Helvetica, sans-serif, Arial;
 }
 
 .suggestions>div {
     padding: 10px;
     font-size: 1.2rem;
-    background-color: #f6f5f0;
-    border-bottom: 1px solid rgb(214, 213, 213);
+    text-align: left;
+    border-top: 1px solid rgb(214, 213, 213);
 }
 
 .suggestions>div:hover {
@@ -46,14 +38,13 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* background-color: blue; */
 }
 
 form {
     transition: all 0.5s;
+    /* absolute w.r.t body  */
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 45%;
 }
 
 .finder {
@@ -117,7 +108,7 @@ form {
     top: 50%;
     position: absolute;
     transform: translateY(-50%);
-    left: 0px;
+    left: 0;
     right: 0;
     margin: auto;
     border-radius: 50%;

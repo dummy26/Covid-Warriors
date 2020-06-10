@@ -1,6 +1,8 @@
+//autocomplete
 const states = [
     'Andaman and Nicobar Islands', 'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chandigarh', 'Chhattisgarh', 'Dadar Nagar Haveli', 'Delhi', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jammu and Kashmir', 'Jharkhand', 'Karnataka', 'Kerala', 'Ladakh', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Puducherry', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telengana', 'Tripura', 'Uttarakhand', 'Uttar Pradesh', 'West Bengal'
 ]
+const form = document.getElementById('search_tab_form');
 
 const searchInput = document.getElementById("search_tab_transcript");
 
@@ -19,6 +21,7 @@ searchInput.addEventListener('keyup', () => {
         div.addEventListener('click', () => {
             searchInput.value = div.innerHTML;
             searchInput.focus();
+            form.submit();
         });
     });
 
@@ -26,8 +29,6 @@ searchInput.addEventListener('keyup', () => {
         suggestionPanel.innerHTML = '';
     }
 })
-
-
 
 // Speech Recognition API for search tab
 function search_tab_startDictation() {
@@ -49,7 +50,7 @@ function search_tab_startDictation() {
         recognition.onresult = (e) => {
             document.getElementById('search_tab_transcript').value = e.results[0][0].transcript;
             recognition.stop();
-            document.getElementById('search_tab_form').submit();
+            form.submit();
         }
 
         recognition.onerror = (e) => {
@@ -77,7 +78,7 @@ function toggle_listening_popup() {
     popup.classList.toggle("show");
 }
 
-// search bar
+// search bar icon animation
 const input = document.querySelector(".finder__input");
 const finder = document.querySelector(".finder");
 
