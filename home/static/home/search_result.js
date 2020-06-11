@@ -16,17 +16,17 @@ if ('speechSynthesis' in window) {
             tts.cancel();
             tts.speak(toSpeak);
             // console.log("started speaking");
-            play_btn.setAttribute("src", "../media/icons/pause.png")
+            play_btn.setAttribute("src", "/media/icons/pause.png")
         } else if (tts.speaking) {
             // tts.pause(); //this lags a bit
             tts.cancel();
             // console.log("speaking cancelled");
-            play_btn.setAttribute("src", "../media/icons/play.png")
+            play_btn.setAttribute("src", "/media/icons/play.png")
         }
     });
     // show play icon when finished speaking 
     toSpeak.onend = (e) => {
-        play_btn.setAttribute("src", "../media/icons/play.png");
+        play_btn.setAttribute("src", "/media/icons/play.png");
         // console.log("speaking finished");
     }
 

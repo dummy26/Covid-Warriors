@@ -3,21 +3,30 @@ let confirmed_data = [];
 let deaths_data = [];
 let myChart;
 
-$.getJSON("static/home/india_pie_data.json", (data) => {
-    for (let key in data) {
-        labels.push(key);
-        confirmed_data.push(data[key]["Confirmed"]);
-        deaths_data.push(data[key]["Deaths"]);
-    }
-    displayChart("confirmed_pie", confirmed_data, "Confirmed Cases", true);
-    displayChart("deaths_pie", deaths_data, "Death Cases");
-
-})
+fetch("static/home/india_pie_data.json")
+    .then(
+        (response) => {
+            if (response.status !== 200) {
+                console.log("Error getting data");
+                return;
+            }
+            response.json().then((data) => {
+                for (let key in data) {
+                    labels.push(key);
+                    confirmed_data.push(data[key]["Confirmed"]);
+                    deaths_data.push(data[key]["Deaths"]);
+                }
+                displayChart("confirmed_pie", confirmed_data, "Confirmed Cases", true);
+                displayChart("deaths_pie", deaths_data, "Death Cases");
+            });
+        })
+    .catch((err) => {
+        console.log('Fetch Error:', err);
+    });
 
 //displays chart
 function displayChart(id, myData, title, legend = false) {
     let ctx = document.getElementById(id).getContext('2d');
-
 
     let data = {
         labels: labels,
@@ -41,6 +50,7 @@ function displayChart(id, myData, title, legend = false) {
                 fontColor: 'white',
             },
             legend: {
+                //to disable clicking on legend
                 onClick: (e) => e.stopPropagation(),
                 display: legend,
                 position: 'right',

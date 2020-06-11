@@ -1,7 +1,6 @@
 body,
 html {
     background-color: #0e1531;
-    /* background-color: #EEEEEE; */
 }
 
 .heading {
@@ -19,6 +18,10 @@ h1 {
     border: 5px solid #fff;
 }
 
+.row {
+    margin-top: 60px;
+}
+
 .worldStats {
     align-items: center;
     justify-content: center;
@@ -27,16 +30,11 @@ h1 {
 }
 
 .pie_charts {
-    /* margin-top: 50px; */
     margin-bottom: 50px;
 }
 
-.my_shadow {
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-}
-
 .card {
-    transition: 0.4s all;
+    transition: all 0.4s;
 }
 
 .card:hover {

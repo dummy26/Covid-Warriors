@@ -27,7 +27,6 @@ class ArticleDetailView(DetailView):
 
 
 def india_tracker(request):
-    # save_heat_map()
     save_json()
     data = get_data()
     context = {
