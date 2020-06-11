@@ -3,40 +3,112 @@ body {
     background: linear-gradient(to right, #25c481, #25b7c4);
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    line-height: 1.66667;
 }
 
-.heading {
-    font-size: 20px;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: 900;
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 30px;
-    margin-right: 15%;
-}
-
-h2 {
-    display: inline;
-    padding: 3px 10px;
-    border: 5px solid #fff;
-}
-
-.container {
-    width: 100%;
-    margin: 15px auto;
+.myContainer {
     text-align: center;
     align-items: center;
     justify-content: center;
 }
 
 
+/* Toggle Tabs */
+
+.tab-slider--nav {
+    /* width: 100%; */
+    float: left;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.tab-slider--tabs {
+    display: block;
+    /* float: left; */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    border-radius: 35px;
+    overflow: hidden;
+    background: #fff;
+    height: 35px;
+    user-select: none;
+}
+
+
+/* purple indicator (slider) */
+
+.tab-slider--tabs:after {
+    content: "";
+    width: 50%;
+    background: #345F90;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 250ms ease-in-out;
+    border-radius: 35px;
+}
+
+.tab-slider--tabs.slide:after {
+    left: 50%;
+}
+
+.tab-slider--trigger {
+    font-size: 12px;
+    line-height: 1;
+    font-weight: bold;
+    color: #345F90;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    display: inline-block;
+    transition: color 250ms ease-in-out;
+    user-select: none;
+}
+
+.tab-slider--trigger.active {
+    color: #fff;
+}
+
+.tab-slider--body {
+    margin-bottom: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.heading {
+    font-size: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 200;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-right: 15%;
+}
+
+h2 {
+    display: inline;
+    padding: 4px 10px;
+    border: 5px solid #fff;
+}
+
+
 /* Radio Button  */
+
+.radios {
+    width: 30%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
 
 form {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
 }
 
@@ -50,20 +122,14 @@ label {
     margin-left: 50px;
 }
 
-.radios {
-    width: 30%;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-}
-
 label input {
-    position: absolute;
-    left: -9999px;
+    visibility: hidden;
+    /* position: absolute;
+    left: -9999px; */
 }
 
 
-/* dot inside radio button  */
+/* dot inside radio button when it's checked */
 
 label input:checked+span:before {
     box-shadow: inset 0 0 0 0.4375em #844685;
@@ -102,67 +168,4 @@ path {
 
 path:hover {
     fill: orange;
-}
-
-
-/* Toggle Tabs */
-
-.tab-slider--nav {
-    /* width: 100%; */
-    float: left;
-    margin-bottom: 20px;
-}
-
-.tab-slider--tabs {
-    display: block;
-    /* float: left; */
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    position: relative;
-    border-radius: 35px;
-    overflow: hidden;
-    background: #fff;
-    height: 35px;
-    user-select: none;
-}
-
-.tab-slider--tabs:after {
-    content: "";
-    width: 50%;
-    background: #345F90;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: all 250ms ease-in-out;
-    border-radius: 35px;
-}
-
-.tab-slider--tabs.slide:after {
-    left: 50%;
-}
-
-.tab-slider--trigger {
-    font-size: 12px;
-    line-height: 1;
-    font-weight: bold;
-    color: #345F90;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 11px 20px;
-    position: relative;
-    z-index: 2;
-    cursor: pointer;
-    display: inline-block;
-    transition: color 250ms ease-in-out;
-    user-select: none;
-}
-
-.tab-slider--trigger.active {
-    color: #fff;
-}
-
-.tab-slider--body {
-    margin-bottom: 20px;
 }
