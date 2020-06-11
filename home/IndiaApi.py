@@ -33,22 +33,24 @@ new_cols = ["Sr.No", "States/UT", "Active", "Recovered", "Deaths", "Confirmed"]
 state_data = pd.DataFrame(data=stats, columns=new_cols)
 
 # Cases being reassigned to states row causes problem when mapping to int because of missing value
-state_data.drop(index=35, axis=0, inplace=True)
+state_data.drop(state_data[state_data['States/UT'] == "Cases being reassigned to states"].index, axis=0, inplace=True)
+state_data.reset_index(inplace=True, drop=True)
 
 # converting string to int
-state_data['Active'] = state_data['Active'].map(int)
-state_data['Recovered'] = state_data['Recovered'].map(int)
-state_data['Deaths'] = state_data['Deaths'].map(int)
-state_data['Confirmed'] = state_data['Confirmed'].map(int)
+try:
+    state_data['Active'] = state_data['Active'].map(int)
+    state_data['Recovered'] = state_data['Recovered'].map(int)
+    state_data['Deaths'] = state_data['Deaths'].map(int)
+    state_data['Confirmed'] = state_data['Confirmed'].map(int)
+except Exception as e:
+    print("Error in mapping to int")
 
 # getting total of each category
-group_size = [state_data['Active'].iloc[35].item(),
-              state_data['Recovered'].iloc[35].item(),
-              state_data['Deaths'].iloc[35].item(),
-              state_data['Confirmed'].iloc[35].item()
-              ]
+total_index = state_data[state_data['States/UT'] == 'Total#'].index.item()
 
+state_data['States/UT'].replace('Daman & Diu', 'Daman and Diu', inplace=True)
 
+# data for pie chart in india_tracker
 def save_json():
     # pie_data = state_data.to_json()
     myStates = ["Maharashtra", "Tamil Nadu", "Delhi", "Gujarat", "Rajasthan",
@@ -68,21 +70,25 @@ def save_json():
 
 
     pie_data["Others"] = {
-        "Confirmed": state_data['Confirmed'].iloc[35].item() - myStates_confirmed,
-        "Deaths": state_data['Deaths'].iloc[35].item() - myStates_deaths
+        "Confirmed": state_data['Confirmed'].iloc[total_index].item() - myStates_confirmed,
+        "Deaths": state_data['Deaths'].iloc[total_index].item() - myStates_deaths
     }
 
     out_file = open("home/static/home/india_pie_data.json", "w")
     json.dump(pie_data, out_file)
 
 
-# Used in views.live_tracker to get group_size
+# Used in views.india_tracker to get total count
 def get_data():
+    group_size = [state_data['Active'].iloc[total_index].item(),
+              state_data['Recovered'].iloc[total_index].item(),
+              state_data['Deaths'].iloc[total_index].item(),
+              state_data['Confirmed'].iloc[total_index].item()
+              ]
     return group_size
 
+
 # Saves data.txt which is used in views.search
-
-
 def save_data():
     data_json = state_data.to_json()
     with open('home/data.txt', 'w') as f:
