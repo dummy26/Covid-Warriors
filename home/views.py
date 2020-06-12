@@ -9,8 +9,8 @@ from .utils import add_comas
 import json
 import pandas
 
-# def homepage(request):
-#     return render(request, 'home/homepage.html', {'articles': Article.objects.all()})
+def homepage(request):
+    return render(request, 'home/index.html')
 
 # Remove later
 

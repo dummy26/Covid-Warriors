@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     # change when homepage ready 
-    path('', ArticleListView.as_view(), name='homepage'),
+    path('', views.homepage, name='homepage'),
     # change when article tab ready 
     path('article/<int:pk>', ArticleDetailView.as_view(), name='article-detail'),
     path('india_tracker', views.india_tracker, name='india_tracker'),

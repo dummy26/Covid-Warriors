@@ -1,0 +1,460 @@
+{%load static%}
+
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <title>Covid Warriors</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'home/css/fonts/icomoon/style.css'%}">
+    <link rel="stylesheet" href="{%static 'home/css/bootstrap/bootstrap.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'home/css/jquery-ui.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'home/css/owl.carousel.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'home/css/owl.theme.default.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'home/css/jquery.fancybox.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'home/css/bootstrap-datepicker.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'home/css/fonts/flaticon/font/flaticon.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'home/css/aos.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'home/css/style.css'%}" type="text/css">
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+
+    <div class="site-wrap">
+
+        <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+
+                    <div class="col-4">
+                        <h1 class="m-0 site-logo"><a href="{%url 'homepage'%}">Covid Warriors</a></h1>
+                    </div>
+
+                    <div class="col-8">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                                <li><a href="about-covid.html" class="nav-link">About Covid</a></li>
+                                <li><a href="Articles.html" class="nav-link">Articles</a></li>
+                                <li><a href="{%url 'india_tracker'%}" class="nav-link">Tracker</a></li>
+                                <li><a href="about-team.html" class="nav-link">About Team</a></li>
+                                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                                <li><a href="games.html" class="nav-link">Games</a></li>
+                            </ul>
+                        </nav>
+
+
+                        <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </header>
+
+
+        <div class="site-blocks-cover overlay bg-light" style="background-image: url('media/images/home_background.png'); " id="home-section">
+
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <div class="col-12 text-center align-self-center text-intro">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <h1 class="text-white" data-aos="fade-up" data-aos-delay="">WELCOME</h1>
+                                <p class="lead text-white" data-aos="fade-up" data-aos-delay="100"><b style="padding: 6px 12px; background:white; color:black; opacity:0.9; border-radius:25px;">Introducing Voice Recognition! Must Try Our New Feature.</b></p>
+                                <p data-aos="fade-up" data-aos-delay="100"><a href="{%url 'search_tab'%}" class="btn smoothscroll btn-primary">Try Now</a></p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="site-section" id="about-section">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-12 mb-4 position-relative">
+                        <h2 class="section-title">About Covid</h2>
+                    </div>
+                    <div class="col-lg-4">
+                        <p>Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus. A coronavirus is a kind of common virus that causes an infection in your nose, sinuses, or upper throat.</p>
+
+                        <p>People can catch COVID-19 from others who have the virus. The disease can spread from person to person through small droplets from the nose or mouth which are spread when a person with COVID-19 coughs or exhales. These droplets
+                            land on objects and surfaces around the person.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="media/images/cov1.png" alt="covid" class="img-fluid">
+                    </div>
+                    <div class="col-lg-4">
+                        <p>COVID-19 affects different people in different ways. Most infected people will develop mild to moderate illness and recover without hospitalization.
+                        </p>
+
+                        <p>At this time, there are no specific vaccines or treatments for COVID-19. However, there are many ongoing clinical trials evaluating potential treatments. WHO will continue to provide updated information as soon as clinical findings
+                            become available.</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="site-section" id="services-section">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-12 mb-5 position-relative">
+                        <h2 class="section-title text-center mb-5">Features of Our Website</h2>
+                    </div>
+
+                    <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="">
+                        <div class="service d-flex h-100">
+                            <div class="svg-icon">
+                                <img src="media/images/voice.png" alt="Voice Recognition" class="img-fluid">
+                            </div>
+                            <div class="service-about">
+                                <h3>Voice Recognition</h3>
+                                <p>Introducing one of the top features of our website, voice recognition enabling you to speak the name of an Indian state and see it's covid data.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="50">
+                        <div class="service d-flex h-100">
+                            <div class="svg-icon">
+                                <img src="media/images/TRACKINGS.png" alt="Tracker" class="img-fluid">
+                            </div>
+                            <div class="service-about">
+                                <h3>Live Tracker</h3>
+                                <p>Introducing live tracker, which shows live data about covid in different states of India.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="">
+                        <div class="service d-flex h-100">
+                            <div class="svg-icon">
+                                <img src="media/images/article.png" alt="Articles" class="img-fluid">
+                            </div>
+                            <div class="service-about">
+                                <h3>Trending Articles</h3>
+                                <p>Reading what's Trending is what everyone would like to do! So here we bring positive articles that would rejoice your mood.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="50">
+                        <div class="service d-flex h-100">
+                            <div class="svg-icon">
+                                <img src="media/images/gallery.png" alt="Gallery" class="img-fluid">
+                            </div>
+                            <div class="service-about">
+                                <h3>Gallery</h3>
+                                <p>Tensed because of the negativity prevaling in the society? These positive picture will give you ray of hope.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="">
+                        <div class="service d-flex h-100">
+                            <div class="svg-icon">
+                                <img src="media/images/about.png" alt="About" class="img-fluid">
+                            </div>
+                            <div class="service-about">
+                                <h3>Makers</h3>
+                                <p>Curious about us? Check our About Team page, where you will get to know about our team personally.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="50">
+                        <div class="service d-flex h-100">
+                            <div class="svg-icon">
+                                <img src="media/images/Corona.png" alt="Corona" class="img-fluid">
+                            </div>
+                            <div class="service-about">
+                                <h3>Information About Covid</h3>
+                                <p>Want to know what is covid 19, what are its causes and symptoms? Check our About Covid page.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <section class="site-section block__62272" id="projects-section">
+
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12 position-relative">
+                        <h2 class="section-title text-center mb-5">Picture Gallery</h2>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center mb-5" data-aos="fade">
+                    <div id="filters" class="filters text-center button-group col-md-7">
+                        <button class="btn btn-primary active" data-filter="*">All</button>
+                        <button class="btn btn-primary" data-filter=".web">Covid 19</button>
+                        <button class="btn btn-primary" data-filter=".design">Helping</button>
+                        <button class="btn btn-primary" data-filter=".brand">Social work</button>
+                    </div>
+                </div>
+
+                <div id="posts" class="row no-gutter">
+                    <div class="item web col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
+                        <a href="media/images/1 (1).jpeg" class="item-wrap fancybox">
+                            <span class="icon-search2"></span>
+                            <img class="img-fluid" src="media/images/1 (1).jpeg">
+                        </a>
+                    </div>
+
+                    <div class="item brand col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
+                        <a href="media/images/2 (3).jpeg" class="item-wrap fancybox">
+                            <span class="icon-search2"></span>
+                            <img class="img-fluid" src="media/images/2 (3).jpeg">
+                        </a>
+                    </div>
+
+                    <div class="item web col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
+                        <a href="media/images/2.jpeg" class="item-wrap fancybox">
+                            <span class="icon-search2"></span>
+                            <img class="img-fluid" src="media/images/2.jpeg">
+                        </a>
+                    </div>
+
+                    <div class="item web col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
+                        <a href="media/images/1 (4).jpeg" class="item-wrap fancybox">
+                            <span class="icon-search2"></span>
+                            <img class="img-fluid" src="media/images/1 (4).jpeg">
+                        </a>
+                    </div>
+                    <div class="item web col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
+                        <a href="media/images/1.jpeg" class="item-wrap fancybox">
+                            <span class="icon-search2"></span>
+                            <img class="img-fluid" src="media/images/1.jpeg">
+                        </a>
+                    </div>
+
+                    <div class="item design col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
+                        <a href="media/images/1 (4).jpeg" class="item-wrap fancybox">
+                            <span class="icon-search2"></span>
+                            <img class="img-fluid" src="media/images/3 (2).jpeg">
+                        </a>
+                    </div>
+
+                    <div class="item design col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
+
+                        <a href="media/images/4 (1).jpg" class="item-wrap fancybox">
+                            <span class="icon-search2"></span>
+                            <img class="img-fluid" src="media/images/4 (1).jpg">
+                        </a>
+
+                    </div>
+
+                    <div class="item design col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
+                        <a href="media/images/5 (1).jpg" class="item-wrap fancybox">
+                            <span class="icon-search2"></span>
+                            <img class="img-fluid" src="media/images/5 (1).jpg">
+                        </a>
+                    </div>
+
+                    <div class="item web col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
+                        <a href="media/images/2.jpeg" class="item-wrap fancybox">
+                            <span class="icon-search2"></span>
+                            <img class="img-fluid" src="media/images/2 (1).jpeg">
+                        </a>
+                    </div>
+
+                    <div class="item design col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
+                        <a href="media/images/6.jpg" class="item-wrap fancybox">
+                            <span class="icon-search2"></span>
+                            <img class="img-fluid" src="media/images/6.jpg">
+                        </a>
+                    </div>
+
+                    <div class="item design col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
+                        <a href="media/images/3 (3).jpeg" class="item-wrap fancybox">
+                            <span class="icon-search2"></span>
+                            <img class="img-fluid" src="media/images/3 (3).jpeg">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+
+        <section class="site-section bg-primary">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mb-5 position-relative">
+                        <h2 class="section-title text-center mb-5 text-white">Motivational Quote</h2>
+                    </div>
+                </div>
+                <div class="owl-carousel slide-one-item">
+                    <div class="slide">
+                        <blockquote>
+                            <p>Excellence is an art won by training and habituation. We do not act rightly because we have virtue or excellence, but we rather have those because we have acted rightly. We are what we repeatedly do. Excellence, then, is not
+                                an act but a habit.”</p>
+                            <p><b><cite>&mdash; Aristotle</cite></b></p>
+                        </blockquote>
+                    </div>
+                    <div class="slide">
+                        <blockquote>
+                            <p>Desire is the key to motivation, but it’s determination and commitment to an unrelenting pursuit of your goal — a commitment to excellence — that will enable you to attain the success you seek. </p>
+                            <p><b><cite>&mdash; Mario Andretti</cite></b></p>
+                        </blockquote>
+                    </div>
+                    <div class="slide">
+                        <blockquote>
+                            <p> One of the most important secrets of life that will be more contented is the act of gratitude and being grateful for the things you have in your life. It is so natural to get caught on the continually needing more prepare,
+                                that we don't stop to welcome the things that we have now.</p>
+                            <p><b><cite>&mdash; Adam Green</cite></b></p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="site-section bg-light" id="blog-section">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-12 mb-5 position-relative">
+                        <h2 class="section-title text-center mb-5">Trending Articles</h2>
+                    </div>
+
+                    <div class="col-md-6 mb-5 mb-lg-0 col-lg-4">
+                        <div class="blog_entry">
+                            <a href="https://theconversation.com/coronavirus-lockdowns-effect-on-air-pollution-provides-rare-glimpse-of-low-carbon-future-134685">
+                                <img src="media/images/carbon.png" alt="Image" class="img-fluid"></a>
+                            <div class="p-4 bg-white">
+                                <h3><a href="https://theconversation.com/coronavirus-lockdowns-effect-on-air-pollution-provides-rare-glimpse-of-low-carbon-future-134685">
+                  COVID-19 results in low carbon emission</a></h3>
+                                <span class="date">April 15, 2020</span>
+                                <p>lockdown’s effect on air pollution provides rare glimpse of low-carbon future.</p>
+                                <p class="more"><a href="https://theconversation.com/coronavirus-lockdowns-effect-on-air-pollution-provides-rare-glimpse-of-low-carbon-future-134685">Read More</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-5 mb-lg-0 col-lg-4">
+                        <div class="blog_entry">
+                            <a href="https://indianexpress.com/article/india/coronavirus-covid-19-crime-rate-road-accidents-suicides-6386519/">
+                                <img src="media/images/crime.png" alt="Image" class="img-fluid"></a>
+                            <div class="p-4 bg-white">
+                                <h3><a href="https://indianexpress.com/article/india/coronavirus-covid-19-crime-rate-road-accidents-suicides-6386519/">Decreased crime rates in India</a></h3>
+                                <span class="date">April 25, 2020</span>
+                                <p>In Kerala, a top police officer confirmed that there has been a significant fall in the number of murders, suicides, unnatural deaths and road accidents in the state</p>
+                                <p class="more"><a href="https://indianexpress.com/article/india/coronavirus-covid-19-crime-rate-road-accidents-suicides-6386519/">Read More</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-5 mb-lg-0 col-lg-4">
+                        <div class="blog_entry">
+                            <a href="https://surveysparrow.com/blog/positive-impacts-to-look-forward-to-post-covid-19-pandemic/"><img src="media/images/life.png" alt="Image" class="img-fluid"></a>
+                            <div class="p-4 bg-white">
+                                <h3><a href="https://surveysparrow.com/blog/positive-impacts-to-look-forward-to-post-covid-19-pandemic/">Entire Lifestyle Changes to Practice Better
+                                               Hygiene</a></h3>
+                                <span class="date">May 10,2020</span>
+                                <p>It’s easy to lose your hopes ,when as a community we’re battling a global pandemic.</p>
+
+                                <p class="more"><a href="https://surveysparrow.com/blog/positive-impacts-to-look-forward-to-post-covid-19-pandemic/">Read More</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <footer class="site-section bg-light footer">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-3">
+                        <h3 class="footer-title">Notice</h3>
+                        <p><span class="d-inline-block d-md-block">This website is under development , many upgrades are done daily.</p>
+          </div>
+          <div class="col-md-5 mx-auto">
+            <div class="row">
+             
+              
+     
+            </div>
+          </div>
+          <div class="col-md-3">
+            <h3 class="footer-title">Follow Us</h3>
+            <a href="hhtps://www.facebook.com/" class="social-circle m-2"><span class="icon-facebook"></span></a>
+                            <a href="https://www.instagram.com/" class="social-circle m-2"><span class="icon-instagram"></span></a>
+                            <a href="#" class="social-circle m-2"><span class="icon-linkedin"></span></a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script> All rights reserved | <i class="icon-heart" aria-hidden="true"></i> by Covid Warriors
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- .site-wrap -->
+
+    <script src="{%static 'home/js/jquery-3.3.1.min.js'%}"></script>
+    <script src="{%static 'home/js/jquery-ui.js'%}"></script>
+    <script src="{%static 'home/js/popper.min.js'%}"></script>
+    <script src="{%static 'home/js/bootstrap.min.js'%}"></script>
+    <script src="{%static 'home/js/owl.carousel.min.js'%}"></script>
+    <script src="{%static 'home/js/jquery.easing.1.3.js'%}"></script>
+    <script src="{%static 'home/js/aos.js'%}"></script>
+    <script src="{%static 'home/js/jquery.fancybox.min.js'%}"></script>
+    <script src="{%static 'home/js/jquery.sticky.js'%}"></script>
+    <script src="{%static 'home/js/isotope.pkgd.min.js'%}"></script>
+    <script src="{%static 'home/js/main.js'%}"></script>
+</body>
+
+</html>

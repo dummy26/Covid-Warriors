@@ -1,9 +1,0 @@
-{%extends 'home/base.html'%} {%block content%} {%if messages%} {%for message in messages%}
-<div class='alert'>
-    {{message}}
-</div>
-{%endfor%} {%endif%} {%for article in object_list%}
-<h2><a class="article-title" href="{%url 'article-detail' article.id%}">{{ article.title }}</a></h2>
-<img src="{{article.image.url}}" />
-<p>{{article.content}}</p>
-<br> {%endfor%} {%endblock content%}

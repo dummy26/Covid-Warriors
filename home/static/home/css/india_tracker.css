@@ -29,6 +29,10 @@ h1 {
     margin: 40px;
 }
 
+.worldStats a {
+    color: rgb(116, 116, 243);
+}
+
 .pie_charts {
     margin-bottom: 50px;
 }
