@@ -11,6 +11,8 @@
 
     <link rel="stylesheet" href="{%static 'home/css/search_result.css'%}" type="text/css">
     <link rel="stylesheet" href="{%static 'home/css/gradients.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'home/css/footer.css'%}" type="text/css">
+
 
 </head>
 
@@ -27,7 +29,7 @@
     </div>
 
     <div class="container">
-        <div class="row">
+        <div class="row myCardRow">
             <div class="col-4">
                 <div class="card text-dark bg-blue text-center" data-toggle="popover" title="National Average: {{Average_active}}">
                     <div class="card-body">
@@ -57,7 +59,7 @@
 
         </div>
 
-        <div class="row">
+        <div class="row myCardRow">
             <div class="col-4">
                 <div class="card text-dark bg-orange text-center" data-toggle="popover" title="National Average: {{Average_confirmed}}">
                     <div class="card-body">
@@ -86,6 +88,9 @@
             </div>
         </div>
     </div>
+
+    {%include 'home/footer.html'%}
+
 
     <!-- from bootstrap  -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous"></script>

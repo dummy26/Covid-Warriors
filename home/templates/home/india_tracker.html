@@ -11,6 +11,8 @@
 
     <link rel="stylesheet" href="{%static 'home/css/india_tracker.css'%}" type="text/css">
     <link rel="stylesheet" href="{%static 'home/css/gradients.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'home/css/footer.css'%}" type="text/css">
+
 
 </head>
 
@@ -20,7 +22,7 @@
     </div>
 
     <div class="container">
-        <div class="row">
+        <div class="row myCardRow">
             <div class="col-4">
                 <div class="card text-dark bg-blue text-center">
                     <div class="card-body">
@@ -50,7 +52,7 @@
 
         </div>
 
-        <div class="row">
+        <div class="row myCardRow">
             <div class="col-4">
                 <div class="card text-dark bg-orange text-center">
                     <div class="card-body">
@@ -100,6 +102,8 @@
         </canvas>
         </div>
     </div>
+
+    {%include 'home/footer.html'%}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src="{%static 'home/js/india_tracker.js'%}"></script>

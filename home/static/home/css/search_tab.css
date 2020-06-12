@@ -16,7 +16,14 @@ body {
     -o-background-size: cover;
 }
 
-.container {
+.searchImage {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.myContainer {
     text-align: center;
     /* color: #2c3e50; */
     width: 100%;
@@ -84,8 +91,8 @@ form {
 /* white circle in search icon  */
 
 .finder__icon:after {
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
     background-color: #292929;
     border: 3px solid #f6f5f0;
     top: 50%;
@@ -98,7 +105,7 @@ form {
 }
 
 .active .finder__icon:after {
-    border-width: 11px;
+    border-width: 10px;
     background-color: #f6f5f0;
 }
 
@@ -106,8 +113,8 @@ form {
 /* handle of magnifying glass in search icon  */
 
 .finder__icon:before {
-    width: 4px;
-    height: 13px;
+    width: 3px;
+    height: 15px;
     background-color: #f6f5f0;
     top: 50%;
     left: 20px;
