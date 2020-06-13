@@ -1,8 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .models import Article
-from django.contrib import messages
-from django.views.generic import ListView, DetailView
 from .IndiaApi import save_data, get_data, save_json
 from .statsApi import get_stats
 from .utils import add_comas
@@ -12,19 +8,8 @@ import pandas
 def homepage(request):
     return render(request, 'home/index.html')
 
-# Remove later
-
-
-class ArticleListView(ListView):
-    model = Article
-    template_name = 'home/homepage.html'
-
-# Remove later
-
-
-class ArticleDetailView(DetailView):
-    model = Article
-
+def articles(request):
+    return render(request, 'home/articles.html')
 
 def india_tracker(request):
     save_json()
@@ -102,7 +87,6 @@ def search(request):
         # if target is not in states this exception will be raised
         except IndexError as e:
             # this message will be shown on homepage
-            # messages.error(request, 'Could not find that')
             return redirect('404')
 
         if Confirmed > Average_confirmed:

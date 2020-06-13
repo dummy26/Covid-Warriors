@@ -1,0 +1,74 @@
+body {
+    font-family: sans-serif;
+}
+
+.heading {
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 200;
+    margin: 50px;
+}
+
+.heading h1 {
+    display: inline;
+    padding: 6px 20px;
+    border: 5px solid #000;
+}
+
+.myArticles {
+    width: 80%;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.myArticles a {
+    text-decoration: none;
+    color: black;
+}
+
+.myArticle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgb(145, 145, 145);
+    transition: 0.3s;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.myArticle:hover {
+    box-shadow: 0 8px 20px rgb(145, 145, 145);
+}
+
+.myArticle h2 {
+    margin: 0;
+}
+
+.myArticle p {
+    margin-right: 2rem;
+    color: rgb(80, 80, 80);
+    line-height: 200%;
+}
+
+.myArticle-body {
+    /* width: 100%;
+    height: 100%; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.myArticle-body img {
+    width: 500px;
+    height: 300px;
+    /* width: 50%;
+    height: 50%; */
+    object-fit: contain;
+}
