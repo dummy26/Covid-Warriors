@@ -161,11 +161,11 @@ label span:before {
 
 /* World map  */
 
-path {
+.tab-slider--body path {
     fill: #3F51B5;
     stroke: #25b7c4;
 }
 
-path:hover {
+.tab-slider--body path:hover {
     fill: orange;
 }
