@@ -29,8 +29,19 @@ h1 {
     margin: 40px;
 }
 
-.worldStats a {
-    color: rgb(116, 116, 243);
+.worldStats button {
+    border: none;
+    border-radius: 50px;
+    background-color: rgb(220, 220, 220);
+    color: #cf752a;
+    padding: 0.5rem 1rem;
+    transition: all 0.5s ease;
+    outline: none;
+}
+
+.worldStats button:hover {
+    background-color: #cf752a;
+    color: rgb(220, 220, 220);
 }
 
 .pie_charts {
