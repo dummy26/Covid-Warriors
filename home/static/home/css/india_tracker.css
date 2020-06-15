@@ -34,15 +34,14 @@ h1 {
     border: none;
     border-radius: 50px;
     background-color: rgb(220, 220, 220);
-    color: #cf752a;
+    color: #ff7300;
     padding: 0.5rem 1rem;
     transition: all 0.5s ease;
     outline: none;
 }
 
 .worldStats button:hover {
-    background-color: #cf752a;
-    color: rgb(220, 220, 220);
+    background-color: rgb(190, 190, 190);
 }
 
 .pie_charts {
