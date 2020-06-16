@@ -37,7 +37,6 @@ body {
     justify-content: space-evenly;
     margin-top: 3rem;
     padding: 1rem;
-    /* box-shadow: 0 2px 8px rgb(145, 145, 145); */
     transition: 0.3s;
     border-radius: 4px;
     background: rgba(235, 235, 235, 1);
@@ -59,13 +58,10 @@ body {
 
 .myArticle p {
     margin-right: 2rem;
-    color: rgb(80, 80, 80);
     line-height: 200%;
 }
 
 .myArticle-body {
-    /* width: 100%;
-    height: 100%; */
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -75,7 +71,5 @@ body {
 .myArticle-body img {
     width: 500px;
     height: 300px;
-    /* width: 50%;
-    height: 50%; */
     object-fit: contain;
 }
