@@ -2,7 +2,6 @@ import json
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
-import matplotlib
 
 url = 'https://www.mohfw.gov.in/'
 web_content = requests.get(url).content
@@ -15,7 +14,7 @@ def extract_contents(row): return [x.text.replace('\n', '') for x in row]
 
 
 stats = []
-# find all table rows and data cells within
+# find all table rows and data cells
 all_rows = soup.find_all('tr')
 
 for row in all_rows:
@@ -29,7 +28,8 @@ new_cols = ["Sr.No", "States/UT", "Active", "Recovered", "Deaths", "Confirmed"]
 state_data = pd.DataFrame(data=stats, columns=new_cols)
 
 # Cases being reassigned to states row causes problem when mapping to int because of missing value
-state_data.drop(state_data[state_data['States/UT'] == "Cases being reassigned to states"].index, axis=0, inplace=True)
+state_data.drop(state_data[state_data['States/UT'] ==
+                           "Cases being reassigned to states"].index, axis=0, inplace=True)
 state_data.reset_index(inplace=True, drop=True)
 
 # converting string to int
@@ -41,29 +41,31 @@ try:
 except Exception as e:
     print("Error in mapping to int")
 
-# getting total of each category
+# getting index of row having total count
 total_index = state_data[state_data['States/UT'] == 'Total#'].index.item()
 
 state_data['States/UT'].replace('Daman & Diu', 'Daman and Diu', inplace=True)
 
 # data for pie chart in india_tracker
-def save_json():
-    # pie_data = state_data.to_json()
+def save_pie_json():
     myStates = ["Maharashtra", "Tamil Nadu", "Delhi", "Gujarat", "Rajasthan",
-              "Uttar Pradesh", "Madhya Pradesh", "West Bengal", "Karnataka", "Bihar"]
+                "Uttar Pradesh", "Madhya Pradesh", "West Bengal", "Karnataka", "Bihar"]
+
     pie_data = {}
     myStates_confirmed = 0
     myStates_deaths = 0
+
     for state in myStates:
-        confirmed = state_data[state_data["States/UT"] == state]["Confirmed"].item()
+        confirmed = state_data[state_data["States/UT"]
+                               == state]["Confirmed"].item()
         deaths = state_data[state_data["States/UT"] == state]["Deaths"].item()
         pie_data[state] = {
             "Confirmed": confirmed,
             "Deaths": deaths
         }
+
         myStates_confirmed += confirmed
         myStates_deaths += deaths
-
 
     pie_data["Others"] = {
         "Confirmed": state_data['Confirmed'].iloc[total_index].item() - myStates_confirmed,
@@ -75,17 +77,14 @@ def save_json():
 
 
 # Used in views.india_tracker to get total count
+def get_total_count():
+    return [
+        state_data['Active'].iloc[total_index].item(),
+        state_data['Recovered'].iloc[total_index].item(),
+        state_data['Deaths'].iloc[total_index].item(),
+        state_data['Confirmed'].iloc[total_index].item()
+    ]
+
+# Returns dataframe which is used in views.search
 def get_data():
-    group_size = [state_data['Active'].iloc[total_index].item(),
-              state_data['Recovered'].iloc[total_index].item(),
-              state_data['Deaths'].iloc[total_index].item(),
-              state_data['Confirmed'].iloc[total_index].item()
-              ]
-    return group_size
-
-
-# Saves data.txt which is used in views.search
-def save_data():
-    data_json = state_data.to_json()
-    with open('home/data.txt', 'w') as f:
-        f.write(data_json)
+    return state_data

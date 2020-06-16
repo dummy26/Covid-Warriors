@@ -1,19 +1,20 @@
 from django.shortcuts import render, redirect
-from .IndiaApi import save_data, get_data, save_json
+from .IndiaApi import get_data, get_total_count, save_pie_json
 from .statsApi import get_stats
 from .utils import add_comas
-import json
 import pandas
 
 def homepage(request):
     return render(request, 'home/index.html')
 
+
 def articles(request):
     return render(request, 'home/articles.html')
 
+
 def india_tracker(request):
-    save_json()
-    data = get_data()
+    save_pie_json()
+    data = get_total_count()
     context = {
         'Active': add_comas(data[0]),
         'Recovered': add_comas(data[1]),
@@ -28,11 +29,7 @@ def india_tracker(request):
 def search(request):
     # when someone searches and submits form it's a get request
     if request.method == 'GET':
-        # gets data from govt site and saves it in data.txt
-        save_data()
-
-        df = pandas.read_json('home/data.txt')
-        df.drop(['Sr.No'], axis=1, inplace=True)
+        df = get_data()
         query = request.GET['q'].lower()
 
         states = ['Andaman and Nicobar Islands', 'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chandigarh', 'Chhattisgarh', 'Dadar Nagar Haveli', 'Daman and Diu', 'Delhi', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jammu and Kashmir', 'Jharkhand', 'Karnataka',
@@ -81,14 +78,14 @@ def search(request):
             Average_deaths = df['Deaths'].iloc[total_index].item() / 36
             Average_confirmed = df['Confirmed'].iloc[total_index].item() / 36
 
-            Average_recovered_percent = Average_recovered / Average_confirmed * 100
-            Average_deaths_percent =  Average_deaths / Average_confirmed * 100
+            Average_recovered_percent = round(Average_recovered / Average_confirmed * 100, 2)
+            Average_deaths_percent =  round(Average_deaths / Average_confirmed * 100, 2)
 
         # if target is not in states this exception will be raised
         except IndexError as e:
-            # this message will be shown on homepage
             return redirect('404')
 
+        # tts text
         if Confirmed > Average_confirmed:
             text_to_speak = f"With {Confirmed} total confirmed cases, {target} is in worse condition compared to national average"
             if Active > Average_active:
@@ -116,9 +113,8 @@ def search(request):
             'Average_recovered': add_comas(int(Average_recovered)),
             'Average_deaths': add_comas(int(Average_deaths)),
             'Average_confirmed': add_comas(int(Average_confirmed)),
-            'Average_recovered_percent': round(Average_recovered_percent, 2),
-            'Average_deaths_percent' : round(Average_deaths_percent, 2),
-
+            'Average_recovered_percent': Average_recovered_percent,
+            'Average_deaths_percent' : Average_deaths_percent,
         }
 
         return render(request, 'home/search_result.html', context)
@@ -134,11 +130,12 @@ def page404(request):
 
 def world_tracker(request):
     data = get_stats()
+    # If we don't get data from api we request again
     if data == 0:
         return redirect('world_tracker')
 
     # data from govt site and other api doesn't match so changing it
-    india_data = get_data()
+    india_data = get_total_count()
     data[55] = {'Confirmed': add_comas(india_data[3]),
      'Recovered': add_comas(india_data[1]),
      'Deaths': add_comas(india_data[2])

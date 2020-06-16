@@ -10,10 +10,7 @@ def get_stats():
     if response.status_code != 200:
         return 0
     else:
-        x = response.json()
-        t = x.get('Countries')
-
-        df = pd.DataFrame.from_dict(t)
+        df = pd.DataFrame.from_dict(response.json().get('Countries'))
         df.drop(["CountryCode", "Slug", "Date"], axis=1, inplace=True)
 
         countries = ['Afghanistan', 'Angola', 'Albania', 'United Arab Emirates', 'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan', 'Burundi', 'Belgium', 'Benin', 'Burkina Faso', 'Bangladesh', 'Bulgaria', 'Bosnia and Herzegovina', 'Belarus', 'Bolivia', 'Brazil', 'Bhutan', 'Botswana', 'Central African Republic', 'Canada', 'Switzerland', 'Chile', 'China', "Côte d'Ivoire", 'Cameroon', 'Colombia', 'Costa Rica', 'Cuba', 'Cyprus', 'Czech Republic', 'Germany', 'Djibouti', 'Denmark', 'Dominican Republic', 'Algeria', 'Ecuador', 'Egypt', 'Eritrea', 'Spain', 'Ethiopia', 'Finland', 'France', 'Gabon', 'United Kingdom', 'Ghana', 'Guinea', 'Equatorial Guinea', 'Greece', 'Guatemala', 'Guyana', 'Hungary', 'Indonesia', 'India', 'Ireland', 'Iran, Islamic Republic of', 'Iraq', 'Iceland', 'Israel', 'Italy', 'Jordan', 'Japan', 'Kazakhstan', 'Kenya', 'Kyrgyzstan', 'Cambodia',
@@ -26,7 +23,7 @@ def get_stats():
                          'Deaths': add_comas(df[df['Country'] == country]['TotalDeaths'].item()),
                          })
 
-# data for charts in stats.html 
+        # data for charts in world_tracker.html 
         chart_json_data = {
             "USA": {
                 "Confirmed": df[df['Country'] == "United States of America"]['TotalConfirmed'].item(),
