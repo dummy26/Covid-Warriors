@@ -142,3 +142,6 @@ def world_tracker(request):
     }
     
     return render(request, 'home/world_tracker.html', {"data": data})
+
+def about_team(request):
+    return render(request, 'home/about_team.html')

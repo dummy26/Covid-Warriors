@@ -11,6 +11,8 @@ urlpatterns = [
     path('world_tracker', views.world_tracker, name='world_tracker'),
     path('search_tab', views.search_tab, name='search_tab'),
     path('404', views.page404, name='404'),
+    path('about_team', views.about_team, name='about_team'),
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

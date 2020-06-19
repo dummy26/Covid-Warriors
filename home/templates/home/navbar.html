@@ -1,0 +1,22 @@
+<!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+<header>
+    <a href="index.html" id="logo"><img class="logo-img" src="media/images/logo.JPG" alt="Logo"></a>
+    <div class="menu-toggle"></div>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about-covid.html">About Covid</a></li>
+            <li><a href="games.html">Games</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about-team.html">About Us</a></li>
+        </ul>
+    </nav>
+    <div class="clearfix"></div>
+</header>
+<script>
+    document.querySelector('.menu-toggle').addEventListener('click',
+        () => {
+            document.querySelector('.menu-toggle').classList.toggle('active')
+            document.querySelector('nav').classList.toggle('active')
+        })
+</script>
