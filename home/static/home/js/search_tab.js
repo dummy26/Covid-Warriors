@@ -1,12 +1,15 @@
 // Speech Recognition API for search tab
 function search_tab_startDictation() {
 
-    if (window.hasOwnProperty('webkitSpeechRecognition')) {
-        let recognition = new webkitSpeechRecognition();
+    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+        const SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+        let recognition = new SpeechRecognition();
         let popup = document.getElementById("listening_popup");
-        let audioElement = new Audio("../media/audios/voice_search.mp3");
+        let audioElement = new Audio("/media/audios/voice_search.mp3");
 
+        //so that recognition stops when user stops talking
         recognition.continuous = false;
+        //we only want final result
         recognition.interimResults = false;
 
         recognition.lang = "en-in";
