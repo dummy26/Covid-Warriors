@@ -4,6 +4,7 @@ from .statsApi import get_stats
 from .utils import add_comas
 import pandas
 
+
 def homepage(request):
     return render(request, 'home/index.html')
 
@@ -32,7 +33,7 @@ def search(request):
         df = get_data()
         query = request.GET['q'].lower()
 
-        states = ['Andaman and Nicobar Islands', 'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chandigarh', 'Chhattisgarh', 'Dadar Nagar Haveli', 'Daman and Diu', 'Delhi', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jammu and Kashmir', 'Jharkhand', 'Karnataka',
+        states = ['Andaman and Nicobar Islands', 'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chandigarh', 'Chhattisgarh', 'Dadra and Nagar Haveli and Daman and Diu', 'Delhi', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jammu and Kashmir', 'Jharkhand', 'Karnataka',
                   'Kerala', 'Ladakh', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Puducherry', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telengana', 'Tripura', 'Uttarakhand', 'Uttar Pradesh', 'West Bengal']
 
         target = ''
@@ -42,14 +43,13 @@ def search(request):
                 break
 
         if target == '':
-            andaman_extras = ['andaman', 'andaman and nicobar',
-                              'andaman and nicobar island']
-
+            andaman_extras = ['andaman', 'andaman and nicobar', 'andaman and nicobar island']
             for extra in andaman_extras:
                 if extra in query:
                     target = 'Andaman and Nicobar Islands'
                     break
 
+        if target == '':
             if 'bengal' in query:
                 target = "West Bengal"
 
@@ -60,8 +60,17 @@ def search(request):
                     target = "Jammu and Kashmir"
                     break
 
+        if target == '':
             if 'himachal' in query:
                 target = "Himachal Pradesh"
+
+        if target == '':
+            dadar_extras = ['dadra and nagar haveli',
+                            'daman and diu', 'dadra nagar haveli']
+            for extra in dadar_extras:
+                if extra in query:
+                    target = 'Dadra and Nagar Haveli and Daman and Diu'
+                    break
 
         try:
             Active = df[df['States/UT'] == target]['Active'].iloc[0]
@@ -72,14 +81,16 @@ def search(request):
             death_percent = round(Deaths/Confirmed*100, 2)
 
             total_index = df[df['States/UT'] == 'Total#'].index.item()
-            
-            Average_active = df['Active'].iloc[total_index].item() / 36
-            Average_recovered = df['Recovered'].iloc[total_index].item() / 36
-            Average_deaths = df['Deaths'].iloc[total_index].item() / 36
-            Average_confirmed = df['Confirmed'].iloc[total_index].item() / 36
 
-            Average_recovered_percent = round(Average_recovered / Average_confirmed * 100, 2)
-            Average_deaths_percent =  round(Average_deaths / Average_confirmed * 100, 2)
+            Average_active = df['Active'].iloc[total_index].item() / 35
+            Average_recovered = df['Recovered'].iloc[total_index].item() / 35
+            Average_deaths = df['Deaths'].iloc[total_index].item() / 35
+            Average_confirmed = df['Confirmed'].iloc[total_index].item() / 35
+
+            Average_recovered_percent = round(
+                Average_recovered / Average_confirmed * 100, 2)
+            Average_deaths_percent = round(
+                Average_deaths / Average_confirmed * 100, 2)
 
         # if target is not in states this exception will be raised
         except IndexError as e:
@@ -114,7 +125,7 @@ def search(request):
             'Average_deaths': add_comas(int(Average_deaths)),
             'Average_confirmed': add_comas(int(Average_confirmed)),
             'Average_recovered_percent': Average_recovered_percent,
-            'Average_deaths_percent' : Average_deaths_percent,
+            'Average_deaths_percent': Average_deaths_percent,
         }
 
         return render(request, 'home/search_result.html', context)
@@ -137,11 +148,12 @@ def world_tracker(request):
     # data from govt site and other api doesn't match so changing it
     india_data = get_total_count()
     data[55] = {'Confirmed': add_comas(india_data[3]),
-     'Recovered': add_comas(india_data[1]),
-     'Deaths': add_comas(india_data[2])
-    }
-    
+                'Recovered': add_comas(india_data[1]),
+                'Deaths': add_comas(india_data[2])
+                }
+
     return render(request, 'home/world_tracker.html', {"data": data})
+
 
 def about_team(request):
     return render(request, 'home/about_team.html')
