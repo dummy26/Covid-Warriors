@@ -38,6 +38,10 @@ def get_stats():
                        "Deaths": df[df['Country'] == "Russian Federation"]['TotalDeaths'].item()
                        },
 
+            "India": {"Confirmed": df[df['Country'] == "India"]['TotalConfirmed'].item(),
+                      "Deaths": df[df['Country'] == "India"]['TotalDeaths'].item()
+                      },
+
             "United Kingdom": {"Confirmed": df[df['Country'] == "United Kingdom"]['TotalConfirmed'].item(),
                                "Deaths": df[df['Country'] == "United Kingdom"]['TotalDeaths'].item()
                                },
@@ -46,38 +50,33 @@ def get_stats():
                       "Deaths": df[df['Country'] == "Spain"]['TotalDeaths'].item()
                       },
 
+            "Peru": {"Confirmed": df[df['Country'] == "Peru"]['TotalConfirmed'].item(),
+                     "Deaths": df[df['Country'] == "Peru"]['TotalDeaths'].item()
+                     },
+
             "Italy": {"Confirmed": df[df['Country'] == "Italy"]['TotalConfirmed'].item(),
                       "Deaths": df[df['Country'] == "Italy"]['TotalDeaths'].item()
                       },
 
-            "India": {"Confirmed": df[df['Country'] == "India"]['TotalConfirmed'].item(),
-                      "Deaths": df[df['Country'] == "India"]['TotalDeaths'].item()
+            "Chile": {"Confirmed": df[df['Country'] == "Chile"]['TotalConfirmed'].item(),
+                      "Deaths": df[df['Country'] == "Chile"]['TotalDeaths'].item()
                       },
-
-
-            "France": {"Confirmed": df[df['Country'] == "France"]['TotalConfirmed'].item(),
-                       "Deaths": df[df['Country'] == "France"]['TotalDeaths'].item()
-                       },
+            
+            "Iran": {"Confirmed": df[df['Country'] == "Iran, Islamic Republic of"]['TotalConfirmed'].item(),
+                     "Deaths": df[df['Country'] == "Iran, Islamic Republic of"]['TotalDeaths'].item()
+                     },
 
             "Germany": {"Confirmed": df[df['Country'] == "Germany"]['TotalConfirmed'].item(),
                         "Deaths": df[df['Country'] == "Germany"]['TotalDeaths'].item()
                         },
 
-
-            "Peru": {"Confirmed": df[df['Country'] == "Peru"]['TotalConfirmed'].item(),
-                     "Deaths": df[df['Country'] == "Peru"]['TotalDeaths'].item()
-                     },
-
-
             "Turkey": {"Confirmed": df[df['Country'] == "Turkey"]['TotalConfirmed'].item(),
                        "Deaths": df[df['Country'] == "Turkey"]['TotalDeaths'].item()
                        },
-
-
-            "Iran": {"Confirmed": df[df['Country'] == "Iran, Islamic Republic of"]['TotalConfirmed'].item(),
-                     "Deaths": df[df['Country'] == "Iran, Islamic Republic of"]['TotalDeaths'].item()
-                     },
         }
+
+        # sorting from highest confirmed cases to lowest
+        chart_json_data = {k: v for k, v in sorted(chart_json_data.items(), key=lambda item: item[1]['Confirmed'], reverse=True)}
 
         out_file = open("home/static/home/chart_data.json", "w")
         json.dump(chart_json_data, out_file)
