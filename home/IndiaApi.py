@@ -35,29 +35,27 @@ def get_data():
 
 # data for pie chart in india_tracker
 def save_pie_json():
-    myStates = ["Maharashtra", "Tamil Nadu", "Delhi", "Gujarat", "Rajasthan",
-                "Uttar Pradesh", "Madhya Pradesh", "West Bengal", "Karnataka", "Bihar"]
+    topTenStatesDf = df.iloc[df['Confirmed'].nlargest(11)[1:].index]
+    topTenStates = topTenStatesDf['States/UT']
+    topTenStatesConfirmed = topTenStatesDf['Confirmed'].sum().item()
+    topTenStatesDeaths = topTenStatesDf['Deaths'].sum().item()
 
     pie_data = {}
-    myStates_confirmed = 0
-    myStates_deaths = 0
 
-    for state in myStates:
-        confirmed = df[df["States/UT"]
-                               == state]["Confirmed"].item()
+    for state in topTenStates:
+        confirmed = df[df["States/UT"] == state]["Confirmed"].item()
         deaths = df[df["States/UT"] == state]["Deaths"].item()
         pie_data[state] = {
             "Confirmed": confirmed,
             "Deaths": deaths
         }
 
-        myStates_confirmed += confirmed
-        myStates_deaths += deaths
-
     pie_data["Others"] = {
-        "Confirmed": df['Confirmed'].iloc[total_index].item() - myStates_confirmed,
-        "Deaths": df['Deaths'].iloc[total_index].item() - myStates_deaths
+        "Confirmed": df['Confirmed'].iloc[total_index].item() - topTenStatesConfirmed,
+        "Deaths": df['Deaths'].iloc[total_index].item() - topTenStatesDeaths
     }
 
     out_file = open("home/static/home/india_pie_data.json", "w")
     json.dump(pie_data, out_file)
+
+save_pie_json()
