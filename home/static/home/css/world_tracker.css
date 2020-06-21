@@ -1,8 +1,7 @@
 body {
     background: -webkit-linear-gradient(left, #25c481, #25b7c4);
     background: linear-gradient(to right, #25c481, #25b7c4);
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
+    font-family: sans-serif;
 }
 
 .myContainer {
@@ -15,7 +14,6 @@ body {
 /* Toggle Tabs */
 
 .tab-slider--nav {
-    /* width: 100%; */
     float: left;
     margin-left: 20px;
     margin-bottom: 30px;
@@ -23,7 +21,6 @@ body {
 
 .tab-slider--tabs {
     display: block;
-    /* float: left; */
     margin: 0;
     padding: 0;
     list-style: none;
@@ -124,8 +121,6 @@ label {
 
 label input {
     visibility: hidden;
-    /* position: absolute;
-    left: -9999px; */
 }
 
 

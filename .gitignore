@@ -139,7 +139,4 @@ cython_debug/
 
 .vscode
 
-home/__pycache__
-home/__pycache__/IndiaApi.cpython-37.pyc
-home/__pycache__/views.cpython-37.pyc
-home/__pycache__/urls.cpython-37.pyc
+home/__pycache__/

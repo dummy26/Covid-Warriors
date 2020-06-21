@@ -1,11 +1,16 @@
-import json
+import requests
 import pandas as pd
+import json
 
 url = 'https://www.mohfw.gov.in/'
+html_content = requests.get(url).text
 
-df = pd.read_html(url)[0]
+df = pd.read_html(html_content)[0]
 df.columns = ["Sr.No", "States/UT", "Active", "Recovered", "Deaths", "Confirmed"]
+
+# dropping last 4 rows which are not needed
 df.drop(df.tail(4).index,inplace=True)
+
 df.drop(df[df['States/UT'] =="Cases being reassigned to states"].index, axis=0, inplace=True)
 df.reset_index(inplace=True, drop=True)
 
@@ -35,8 +40,11 @@ def get_data():
 
 # data for pie chart in india_tracker
 def save_pie_json():
+    # sliced 1: because 1st is Total which we don't want
     topTenStatesDf = df.iloc[df['Confirmed'].nlargest(11)[1:].index]
     topTenStates = topTenStatesDf['States/UT']
+
+    # used item because otherwise we get numpy.int64 which json can't serialize
     topTenStatesConfirmed = topTenStatesDf['Confirmed'].sum().item()
     topTenStatesDeaths = topTenStatesDf['Deaths'].sum().item()
 
@@ -57,5 +65,3 @@ def save_pie_json():
 
     out_file = open("home/static/home/india_pie_data.json", "w")
     json.dump(pie_data, out_file)
-
-save_pie_json()
